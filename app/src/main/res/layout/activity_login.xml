@@ -19,7 +19,7 @@
 
 
     <EditText
-        android:id="@+id/EmailLoginEditText"
+        android:id="@+id/EmailRLoginEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -35,7 +35,7 @@
         android:gravity="start" />
 
     <EditText
-        android:id="@+id/PasswordLoginEditText"
+        android:id="@+id/PasswordRLoginEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -58,7 +58,7 @@
         android:textColor="#ffffff"
         android:layout_marginTop="20dp"
         android:background="#d67601"
-        android:id="@+id/LoginButton"/>
+        android:id="@+id/RLoginButton"/>
 
 
     <Button

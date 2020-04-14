@@ -66,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
         irregularButton = (RadioButton) findViewById(R.id.IrregularButton);
         CustomerTypeGroup = (RadioGroup) findViewById(R.id.CustomerTypeGroup);
 
-        //databaseReference = FirebaseDatabase.getInstance().getReference("user");
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         //firebaseAuth.signOut();
@@ -176,7 +176,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 collpath="users";
                             }
 
-                            db.collection(collpath).add(details).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            db.collection(collpath).add(usermap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Toast.makeText(SignUpActivity.this, "Registration successful", Toast.LENGTH_LONG).show();

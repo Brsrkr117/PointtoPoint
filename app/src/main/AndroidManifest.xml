@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RiderLoginActivity"></activity>
+        <activity android:name=".RiderSecondActivity"></activity>
+        <activity android:name=".RiderLoginActivity" />
         <activity android:name=".ForgotpasswordActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".ProfileActivity" />

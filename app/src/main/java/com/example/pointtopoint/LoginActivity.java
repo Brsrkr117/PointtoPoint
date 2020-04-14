@@ -25,8 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
     private TextView forgotPassword;
+    private TextView Riderlogin;
 
-    //private final static int RC_SIGN_IN = 1;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -35,10 +35,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        txtemail = (EditText) findViewById(R.id.EmailLoginEditText);
-        txtpassword = (EditText) findViewById(R.id.PasswordLoginEditText);
-        btn_login = (Button) findViewById(R.id.LoginButton);
+        txtemail = (EditText) findViewById(R.id.EmailRLoginEditText);
+        txtpassword = (EditText) findViewById(R.id.PasswordRLoginEditText);
+        btn_login = (Button) findViewById(R.id.RLoginButton);
         forgotPassword = (TextView)findViewById(R.id.tvForgotPassword);
+        Riderlogin = (TextView)findViewById(R.id.tvRider_login);
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -69,15 +70,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        Riderlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, RiderLoginActivity.class));
+            }
+        });
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressDialog = new ProgressDialog(LoginActivity.this);
                 progressDialog.show();
                 progressDialog.setContentView(R.layout.progress_dialog);
-                progressDialog.getWindow().setBackgroundDrawableResource(
-                        android.R.color.transparent
-                );
+                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
                 String email = txtemail.getText().toString().trim();
                 String password = txtpassword.getText().toString().trim();
