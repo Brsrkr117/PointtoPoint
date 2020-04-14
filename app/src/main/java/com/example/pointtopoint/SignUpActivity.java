@@ -22,8 +22,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -36,24 +34,18 @@ public class SignUpActivity extends AppCompatActivity {
     private Button SignUp;
     private RadioGroup CustomerTypeGroup;
     private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseFirestore db;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
-    private DatabaseReference databaseReference;
-    private FirebaseDatabase firebaseDatabase;
+    //private DatabaseReference databaseReference;
+    //private FirebaseDatabase firebaseDatabase;
 
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        firebaseAuth.addAuthStateListener(mAuthStateListener);
-        FirebaseUser user = firebaseAuth.getCurrentUser();
 
-    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+        db= FirebaseFirestore.getInstance();
         txtemail = (EditText) findViewById(R.id.EmailEditText);
         txtFullName = (EditText) findViewById(R.id.NameEditText);
         txtusername = (EditText) findViewById(R.id.UsernameEditText);
@@ -69,17 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
-        //firebaseAuth.signOut();
 
-        /*mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser mFireBaseUser = firebaseAuth.getCurrentUser();
-                if (mFireBaseUser != null) {
-                    FirebaseAuth.getInstance().signOut();
-                }
-            }
-        };*/
 
         CustomerTypeGroup.setVisibility(View.INVISIBLE);
 
@@ -175,7 +157,6 @@ public class SignUpActivity extends AppCompatActivity {
                             else{
                                 collpath="users";
                             }
-
                             db.collection(collpath).add(usermap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
