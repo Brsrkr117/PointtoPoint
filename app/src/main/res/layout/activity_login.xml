@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".LoginActivity"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/ic_boy"
+        android:background="@drawable/user_profile_image_background"
+        android:padding="20dp"/>
+
+
+    <EditText
+        android:id="@+id/EmailLoginEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textColorHighlight="#FF5722"
+        android:textColorLink="#4CAF50"
+        android:textSize="20sp"
+        android:gravity="start" />
+
+    <EditText
+        android:id="@+id/PasswordLoginEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textAlignment="viewStart"
+        android:textColorHighlight="#FF5722"
+        android:textColorLink="#4CAF50"
+        android:textSize="20sp"
+        android:gravity="start" />
+
+    <!--<com.google.android.gms.common.SignInButton
+        android:id="@+id/GoogleSignInButton"
+        android:layout_width="141dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="30dp"
+        android:background="#d67601"
+        android:id="@+id/LoginButton"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="20dp"
+        android:background="#d67601"
+        android:id="@+id/RegisterButton"
+        android:onClick="btn_register" />
+    <TextView
+        android:id="@+id/tvForgotPassword"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="5dp"
+        android:textSize="20sp"
+        android:text="Forgot Password?\nClick here to Reset"/>
+
+
+</LinearLayout>
