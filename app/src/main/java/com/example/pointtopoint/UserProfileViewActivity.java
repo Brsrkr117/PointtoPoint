@@ -1,6 +1,8 @@
 package com.example.pointtopoint;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class UserProfileViewActivity extends AppCompatActivity {
     private TextView profileName, profileUsername, profileEmail,profileMobileNumber;
-    private Button profileUpdate, changePassword;
+    private Button profileUpdate, changePassword,goback;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private String UserID;
@@ -32,6 +34,7 @@ public class UserProfileViewActivity extends AppCompatActivity {
         profileMobileNumber = findViewById(R.id.tvMobileNumber);
         profileUpdate = findViewById(R.id.btnProfileUpdate);
         changePassword = findViewById(R.id.btnChangePassword);
+        goback = findViewById(R.id.btnback);
 
         firebaseAuth = FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
@@ -49,12 +52,14 @@ public class UserProfileViewActivity extends AppCompatActivity {
             }
         });
 
-        /*db.collection("users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
+        goback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(new Intent(UserProfileViewActivity.this, SecondActivity.class));
             }
-        });*/
+        });
 
 
         /*profileUpdate.setOnClickListener(new View.OnClickListener() {
@@ -64,13 +69,12 @@ public class UserProfileViewActivity extends AppCompatActivity {
             }
         });*/
 
-
-        /*changePassword.setOnClickListener(new View.OnClickListener() {
+        changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(UserProfileViewActivity.this, UpdatePassword.class));
+                startActivity(new Intent(UserProfileViewActivity.this, ChangePasswordActivity.class));
             }
-        });*/
+        });
 
 
 

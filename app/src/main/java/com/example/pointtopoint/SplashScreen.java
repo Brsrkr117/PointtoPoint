@@ -12,15 +12,11 @@ public class SplashScreen extends AppCompatActivity {
     /*TextView dubstep, dabba;
     ImageView logo;*/
 
-    private static int SPLASH_SCREEN = 4000; //4 Ssecs
+    private static int SPLASH_SCREEN = 2000; //4 Ssecs
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*dubstep = findViewById(R.id.dubstepText);
-        dabba = findViewById(R.id.dabbaText);
-        logo = findViewById(R.id.logoImage);*/
 
         new Handler().postDelayed(new Runnable() {
             @Override

@@ -172,7 +172,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 }
                             });
                             firebaseAuth.signOut();
-                            Toast.makeText(SignUpActivity.this, "Now Log in", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this, "Now Log in", Toast.LENGTH_SHORT).show();
                             finish();
                             startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                         }else{
