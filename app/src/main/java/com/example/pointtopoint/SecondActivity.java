@@ -19,7 +19,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        signout=(Button)(Button) findViewById(R.id.button);
+        signout=(Button)(Button) findViewById(R.id.btnSignout);
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
