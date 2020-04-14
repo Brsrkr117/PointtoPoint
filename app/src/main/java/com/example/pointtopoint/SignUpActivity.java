@@ -35,7 +35,8 @@ public class SignUpActivity extends AppCompatActivity {
     private RadioGroup CustomerTypeGroup;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
+    //private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private String UserID;
     //private DatabaseReference databaseReference;
     //private FirebaseDatabase firebaseDatabase;
 
@@ -61,8 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-
+        db=FirebaseFirestore.getInstance();
         CustomerTypeGroup.setVisibility(View.INVISIBLE);
 
         customerButton.setOnClickListener(new View.OnClickListener() {
@@ -157,9 +157,12 @@ public class SignUpActivity extends AppCompatActivity {
                             else{
                                 collpath="users";
                             }
-                            db.collection(collpath).add(usermap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            UserID=firebaseAuth.getCurrentUser().getUid();
+                            DocumentReference docref=db.collection(collpath).document(UserID);
+
+                            docref.set(usermap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
-                                public void onSuccess(DocumentReference documentReference) {
+                                public void onSuccess(Void aVoid) {
                                     Toast.makeText(SignUpActivity.this, "Registration successful", Toast.LENGTH_LONG).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
