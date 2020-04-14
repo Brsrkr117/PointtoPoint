@@ -168,7 +168,15 @@ public class SignUpActivity extends AppCompatActivity {
                             usermap.putIfAbsent("Role",finalRole);
                             usermap.putIfAbsent("CustomerType",finalCustomerType);
 
-                            db.collection("users").add(usermap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            final String collpath;
+                            if(finalRole.equals("Rider")){
+                                collpath="riders";
+                            }
+                            else{
+                                collpath="users";
+                            }
+
+                            db.collection(collpath).add(details).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Toast.makeText(SignUpActivity.this, "Registration successful", Toast.LENGTH_LONG).show();

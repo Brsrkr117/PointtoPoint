@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context=".LoginActivity"
+    tools:context=".RiderLoginActivity"
     >
+
 
     <ImageView
         android:layout_width="200dp"
-        android:layout_gravity="center"
         android:layout_height="200dp"
-        app:srcCompat="@drawable/ic_boy"
+        android:layout_gravity="center"
         android:background="@drawable/user_profile_image_background"
-        android:padding="20dp"/>
-
+        android:padding="20dp"
+        app:srcCompat="@drawable/rider" />
 
     <EditText
         android:id="@+id/EmailLoginEditText"
@@ -53,7 +53,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
+        android:text="RIDER LOGIN"
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:layout_marginTop="20dp"
