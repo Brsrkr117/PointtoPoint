@@ -70,6 +70,7 @@ public class OrderViewActivity extends AppCompatActivity {
                         orderid.putIfAbsent("Order id",documentReference.getId());
                         db.collection("orders").document(documentReference.getId()).update(orderid);
                         Toast.makeText(OrderViewActivity.this, "Select Pick-up location", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(OrderViewActivity.this, OrderLocationActivity.class ));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
