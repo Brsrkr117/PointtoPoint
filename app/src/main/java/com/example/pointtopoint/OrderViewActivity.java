@@ -66,6 +66,7 @@ public class OrderViewActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(OrderViewActivity.this, "Select Pick-up location", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(OrderViewActivity.this, OrderLocationActivity.class ));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
