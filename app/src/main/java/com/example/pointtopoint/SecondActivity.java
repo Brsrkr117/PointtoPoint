@@ -13,6 +13,7 @@ public class SecondActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private Button signout;
     private Button Viewprofile;
+    private Button createorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class SecondActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         signout=(Button)(Button) findViewById(R.id.btnSignout);
         Viewprofile=(Button)(Button) findViewById(R.id.btnProfile);
+        createorder=(Button)(Button) findViewById(R.id.btnOrder);
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +37,14 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
                 startActivity(new Intent(SecondActivity.this, UserProfileViewActivity.class));
+            }
+        });
+
+        createorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(SecondActivity.this, ItemListActivity.class));
             }
         });
 
