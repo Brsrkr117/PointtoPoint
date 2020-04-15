@@ -28,6 +28,15 @@ public class RiderSecondActivity extends AppCompatActivity {
                 Logout();
             }
         });
+
+        /*profileUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserProfileViewActivity.this, ProfileActivity.class));
+            }
+        });*/
+
+
     }
 
     private void Logout(){

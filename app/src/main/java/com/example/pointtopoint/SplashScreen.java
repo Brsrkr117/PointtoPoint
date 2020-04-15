@@ -9,10 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
-    /*TextView dubstep, dabba;
-    ImageView logo;*/
 
-    private static int SPLASH_SCREEN = 2000; //4 Ssecs
+    private static int SPLASH_SCREEN = 2000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

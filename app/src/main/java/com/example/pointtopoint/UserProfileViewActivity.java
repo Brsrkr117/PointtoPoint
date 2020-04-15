@@ -62,12 +62,13 @@ public class UserProfileViewActivity extends AppCompatActivity {
         });
 
 
-        /*profileUpdate.setOnClickListener(new View.OnClickListener() {
+        profileUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(UserProfileViewActivity.this, UpdateProfile.class));
+                finish();
+                startActivity(new Intent(UserProfileViewActivity.this, ProfileActivity.class));
             }
-        });*/
+        });
 
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +76,6 @@ public class UserProfileViewActivity extends AppCompatActivity {
                 startActivity(new Intent(UserProfileViewActivity.this, ChangePasswordActivity.class));
             }
         });
-
-
-
 
 
 
