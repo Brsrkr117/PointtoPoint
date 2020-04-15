@@ -16,7 +16,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-public class UserProfileViewActivity extends AppCompatActivity {
+public class RiderProfileViewActivity extends AppCompatActivity {
     private TextView profileName, profileUsername, profileEmail,profileMobileNumber;
     private Button profileUpdate, changePassword,goback;
     private FirebaseAuth firebaseAuth;
@@ -26,7 +26,7 @@ public class UserProfileViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile_view);
+        setContentView(R.layout.activity_rider_profile_view);
 
         profileName = findViewById(R.id.tvProfileName);
         profileUsername = findViewById(R.id.tvProfileUsername);
@@ -40,7 +40,7 @@ public class UserProfileViewActivity extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
         UserID=firebaseAuth.getCurrentUser().getUid();
 
-        DocumentReference docref=db.collection("users").document(UserID);
+        DocumentReference docref=db.collection("riders").document(UserID);
 
         docref.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -52,21 +52,19 @@ public class UserProfileViewActivity extends AppCompatActivity {
             }
         });
 
-
         goback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                startActivity(new Intent(UserProfileViewActivity.this, SecondActivity.class));
+                startActivity(new Intent(RiderProfileViewActivity.this, RiderSecondActivity.class));
             }
         });
-
 
         profileUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                startActivity(new Intent(UserProfileViewActivity.this, ProfileActivity.class));
+                startActivity(new Intent(RiderProfileViewActivity.this, RiderProfileActivity.class));
             }
         });
 
@@ -74,11 +72,8 @@ public class UserProfileViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                startActivity(new Intent(UserProfileViewActivity.this, ChangePasswordActivity.class));
+                startActivity(new Intent(RiderProfileViewActivity.this, ChangePasswordActivity.class));
             }
         });
-
-
-
     }
 }

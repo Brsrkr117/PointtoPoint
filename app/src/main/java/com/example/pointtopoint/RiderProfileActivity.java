@@ -23,8 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProfileActivity extends AppCompatActivity {
-
+public class RiderProfileActivity extends AppCompatActivity {
 
     private EditText mUsername;
     private EditText mFullName;
@@ -34,12 +33,10 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private String UserID;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_rider_profile);
 
         mUsername = findViewById(R.id.mUsername);
         mFullName = findViewById(R.id.mFullName);
@@ -51,7 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
         UserID=firebaseAuth.getCurrentUser().getUid();
 
-        DocumentReference docref=db.collection("users").document(UserID);
+        DocumentReference docref=db.collection("riders").document(UserID);
 
         docref.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -79,33 +76,24 @@ public class ProfileActivity extends AppCompatActivity {
                 firebaseAuth = FirebaseAuth.getInstance();
                 db=FirebaseFirestore.getInstance();
                 UserID=firebaseAuth.getCurrentUser().getUid();
-                DocumentReference docref=db.collection("users").document(UserID);
+                DocumentReference docref=db.collection("riders").document(UserID);
 
                 docref.update(usermap).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-
-                        Toast.makeText(ProfileActivity.this, "Updated successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RiderProfileActivity.this, "Updated successfully", Toast.LENGTH_LONG).show();
                         finish();
-                        startActivity(new Intent(ProfileActivity.this, UserProfileViewActivity.class));
+                        startActivity(new Intent(RiderProfileActivity.this, RiderProfileViewActivity.class));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProfileActivity.this, "Update unsuccessful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RiderProfileActivity.this, "Update unsuccessful", Toast.LENGTH_LONG).show();
                     }
                 });
 
 
             }
         });
-
-
-
-
     }
-
-
-
-
 }

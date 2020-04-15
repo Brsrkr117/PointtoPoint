@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RiderSecondActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private Button signout;
+    private Button Viewprofile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class RiderSecondActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         signout=(Button)(Button) findViewById(R.id.buttonRsignout);
+        Viewprofile=(Button)(Button) findViewById(R.id.btnviewprof);
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,16 +31,18 @@ public class RiderSecondActivity extends AppCompatActivity {
             }
         });
 
-        /*profileUpdate.setOnClickListener(new View.OnClickListener() {
+        Viewprofile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(UserProfileViewActivity.this, ProfileActivity.class));
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(RiderSecondActivity.this, RiderProfileViewActivity.class));
             }
-        });*/
+        });
+
+
 
 
     }
-
     private void Logout(){
         firebaseAuth.signOut();
         finish();

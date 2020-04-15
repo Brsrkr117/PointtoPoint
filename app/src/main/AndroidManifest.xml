@@ -13,13 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".RiderProfileActivity"></activity>
+        <activity android:name=".RiderProfileViewActivity" />
+        <activity android:name=".ChangePasswordActivity" android:theme="@style/AppTheme2"/>
         <activity android:name=".UserProfileViewActivity" />
-        <activity android:name=".RiderSecondActivity" android:theme="@style/AppTheme2"/>
+        <activity
+            android:name=".RiderSecondActivity"
+            android:theme="@style/AppTheme2" />
         <activity android:name=".RiderLoginActivity" />
         <activity android:name=".ForgotpasswordActivity" />
-        <activity android:name=".SecondActivity" android:theme="@style/AppTheme2" />
-        <activity android:name=".ProfileActivity" android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".SecondActivity"
+            android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/AppTheme2" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />

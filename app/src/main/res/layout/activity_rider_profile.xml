@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Update Your Rider Profile"
+        android:textColor="#000000"
+        android:textSize="27sp" />
+
+    <EditText
+        android:id="@+id/mFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textColorHighlight="#FF5722"
+        android:textColorLink="#4CAF50"
+        android:textSize="20sp"
+        android:gravity="start" />
+
+    <EditText
+        android:id="@+id/mUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textColorHighlight="#FF5722"
+        android:textColorLink="#4CAF50"
+        android:textSize="20sp"
+        android:gravity="start" />
+
+    <!--<EditText
+        android:id="@+id/mEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textColorHighlight="#FF5722"
+        android:textColorLink="#4CAF50"
+        android:textSize="20sp"
+        android:gravity="start" />-->
+
+    <EditText
+        android:id="@+id/mMobileNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Mobile Number"
+        android:inputType="number"
+        android:textAlignment="viewStart"
+        android:textColorHighlight="#FF5722"
+        android:textColorLink="#4CAF50"
+        android:textSize="20sp"
+        android:gravity="start" />
+
+    <Button
+        android:id="@+id/UpdateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="#d67601"
+        android:text="UPDATE"
+        android:textColor="#ffffff"
+        android:textSize="25sp" />
+
+</LinearLayout>
