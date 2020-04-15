@@ -65,6 +65,10 @@ public class OrderViewActivity extends AppCompatActivity {
                 db.collection("orders").add(order).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
+                        //Toast.makeText(OrderViewActivity.this, "Select Pick-up location", Toast.LENGTH_LONG).show();
+                        Map<String, Object> orderid = new HashMap<>();
+                        orderid.putIfAbsent("Order id",documentReference.getId());
+                        db.collection("orders").document(documentReference.getId()).update(orderid);
                         Toast.makeText(OrderViewActivity.this, "Select Pick-up location", Toast.LENGTH_LONG).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
