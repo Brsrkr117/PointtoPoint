@@ -10,7 +10,7 @@ public class orders {
     Float Dlat,Dlong;
 
     public orders(){
-        
+
     }
 
     public orders(String orderType, String orderPrice, String orderID, String pickupadd, String dropadd, Float plat, Float plong, Float dlat, Float dlong) {
