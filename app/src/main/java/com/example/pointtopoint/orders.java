@@ -9,7 +9,21 @@ public class orders {
     Float Plat,Plong;
     Float Dlat,Dlong;
 
+    public orders(){
+        
+    }
 
+    public orders(String orderType, String orderPrice, String orderID, String pickupadd, String dropadd, Float plat, Float plong, Float dlat, Float dlong) {
+        OrderType = orderType;
+        OrderPrice = orderPrice;
+        OrderID = orderID;
+        Pickupadd = pickupadd;
+        Dropadd = dropadd;
+        Plat = plat;
+        Plong = plong;
+        Dlat = dlat;
+        Dlong = dlong;
+    }
 
     public String getOrderType() {
         return OrderType;
