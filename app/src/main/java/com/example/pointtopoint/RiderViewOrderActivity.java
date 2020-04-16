@@ -40,7 +40,6 @@ public class RiderViewOrderActivity extends AppCompatActivity {
         mOrderlist.setAdapter(ordersListAdapter);
 
         db.collection("orders").addSnapshotListener(new EventListener<QuerySnapshot>() {
-
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 if(e != null){
@@ -51,10 +50,17 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                     if(doc.getType()==DocumentChange.Type.ADDED){
                        /* String name1=doc.getDocument().getString("Order id");
                         Log.d(TAG,"Order ID "+ name1);*/
-                        orders orders =doc.getDocument().toObject(orders.class);
-                        ordersList.add(orders);
 
-                        ordersListAdapter.notifyDataSetChanged();
+                        orders orders =doc.getDocument().toObject(orders.class);
+                        String tempordertype=orders.getOrdertype();
+
+
+                        //conditional recycler view
+
+                        if(tempordertype.equals("Non Veg Large")){
+                            ordersList.add(orders);
+                            ordersListAdapter.notifyDataSetChanged();
+                        }
 
 
                     }

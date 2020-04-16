@@ -76,6 +76,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Map<String, Object> order = new HashMap<>();
+                order.putIfAbsent("orderstatus","pending");
                 order.putIfAbsent("userid",UserID);
                 order.putIfAbsent("ordertype",aordertype);
                 order.putIfAbsent("price",afullprice);
