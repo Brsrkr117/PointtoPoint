@@ -3,7 +3,6 @@
     <string name="openNavDrawer">Navigation Drawer Open</string>
     <string name="closeNavDrawer">Navigation Drawer Close</string>
     <string name="maps_key">AIzaSyCtgnYIAyFBUBiRB89SBCie3JRIXLllhvU</string>
-    <string name="option_get_place">Get place</string>
     <string name="default_info_title">Default Location</string>
     <string name="default_info_snippet">No places found, because location permission is disabled.</string>
     <string name="pick_place">Choose a place</string>

@@ -69,7 +69,6 @@
         android:textColor="#ffffff"
         android:layout_marginTop="15dp"
         android:background="#d67601"
-        android:id="@+id/RegisterButton"
         android:onClick="btn_register" />
     <TextView
         android:id="@+id/tvForgotPassword"

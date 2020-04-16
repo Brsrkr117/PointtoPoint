@@ -3,6 +3,7 @@ package com.example.pointtopoint;
 public class orders {
 
     String orderstatus;
+    String orderotp;
     String orderid;
     String ordertype;
     String price;
@@ -25,8 +26,9 @@ public class orders {
 
     };
 
-    public orders(String orderstatus, String orderid, String ordertype, String price, String userfullname, String userid, String username, String useremail, String usernumber, String riderfullname, String ridername, String riderid, String ridernumber, String rideremail, String pickuplat, String pickuplong, String droplat, String droplong, String pickaddr, String dropaddr) {
+    public orders(String orderstatus, String orderotp, String orderid, String ordertype, String price, String userfullname, String userid, String username, String useremail, String usernumber, String riderfullname, String ridername, String riderid, String ridernumber, String rideremail, String pickuplat, String pickuplong, String droplat, String droplong, String pickaddr, String dropaddr) {
         this.orderstatus = orderstatus;
+        this.orderotp = orderotp;
         this.orderid = orderid;
         this.ordertype = ordertype;
         this.price = price;
@@ -46,6 +48,14 @@ public class orders {
         this.droplong = droplong;
         this.pickaddr = pickaddr;
         this.dropaddr = dropaddr;
+    }
+
+    public String getOrderotp() {
+        return orderotp;
+    }
+
+    public void setOrderotp(String orderotp) {
+        this.orderotp = orderotp;
     }
 
     public String getOrderstatus() {

@@ -68,7 +68,6 @@ public class RiderProfileActivity extends AppCompatActivity {
                 String newmobilenumber=mMobileNumber.getText().toString();
 
                 Map<String, Object> usermap = new HashMap<>();
-
                 usermap.put("name",newfullname);
                 usermap.put("Username",newusername);
                 usermap.put("Mobilenumber",newmobilenumber);

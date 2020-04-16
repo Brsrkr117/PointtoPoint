@@ -22,6 +22,10 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 public class RiderOtpActivity extends AppCompatActivity {
 
     private TextView orderid,ordertype,pickuplocation,droplocation,usernumber,username,userfullname,price,useremail;
@@ -86,7 +90,10 @@ public class RiderOtpActivity extends AppCompatActivity {
 
     public void onSend(View v){
         String phoneNumber = usernumber.getText().toString().trim();
-        String smsMessage = "Hello";
+        Random rand = new Random();
+        String otp=Integer.toString((rand.nextInt((99999 - 10000) + 1) + 10000));
+        String smsMessage = "Your OTP:" + otp;
+
 
         if(phoneNumber == null || phoneNumber.length() == 0 ||
                 smsMessage == null || smsMessage.length() == 0){
@@ -96,6 +103,13 @@ public class RiderOtpActivity extends AppCompatActivity {
         if(checkPermission(Manifest.permission.SEND_SMS)){
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNumber, null, smsMessage, null, null);
+
+            Map<String, Object> usermap = new HashMap<>();
+            usermap.put("orderotp",otp);
+
+            DocumentReference docref=db.collection("orders").document(OrderID);
+            docref.update(usermap);
+
             Toast.makeText(this, "message sent to " + phoneNumber, Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();

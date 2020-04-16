@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pointtopoint">
-<uses-permission android:name="android.permission.SEND_SMS"/>
-    
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <meta-data
         android:name="firebase_analytics_collection_enabled"
         android:value="true" />
@@ -14,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RiderOtpActivity"></activity>
+        <activity android:name=".UserOtpActivity"></activity>
+        <activity android:name=".RiderOtpActivity" />
         <activity android:name=".OrderConfirmationActivity" />
         <activity android:name=".EmailActivity" />
 
