@@ -60,17 +60,17 @@ public class OrderViewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 UserID=firebaseAuth.getCurrentUser().getUid();
                 Map<String, Object> order = new HashMap<>();
-                order.putIfAbsent("Type of Order",aTitle);
-                order.putIfAbsent("Price",aDescription);
+                order.putIfAbsent("ordertype",aTitle);
+                order.putIfAbsent("price",aDescription);
                 db.collection("orders").add(order).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         //Toast.makeText(OrderViewActivity.this, "Select Pick-up location", Toast.LENGTH_LONG).show();
                         Map<String, Object> orderid = new HashMap<>();
-                        orderid.putIfAbsent("Order id",documentReference.getId());
+                        orderid.putIfAbsent("orderid",documentReference.getId());
                         db.collection("orders").document(documentReference.getId()).update(orderid);
                         Toast.makeText(OrderViewActivity.this, "Select Pick-up location", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(OrderViewActivity.this, OrderLocationActivity.class ));
+                        //startActivity(new Intent(OrderViewActivity.this, OrderLocationActivity.class ));
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
