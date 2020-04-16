@@ -32,7 +32,7 @@ public class RiderViewOrderActivity extends AppCompatActivity {
         mOrderlist=(RecyclerView)findViewById(R.id.Order_list);
         db=FirebaseFirestore.getInstance();
         ordersList=new ArrayList<>();
-        ordersListAdapter= new OrderListAdapter(ordersList);
+        ordersListAdapter= new OrderListAdapter(ordersList,this);
 
         mOrderlist=(RecyclerView)findViewById(R.id.Order_list);
         mOrderlist.setHasFixedSize(true);
