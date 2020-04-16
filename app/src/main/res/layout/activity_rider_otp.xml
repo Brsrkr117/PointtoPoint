@@ -17,4 +17,84 @@
         android:textSize="28sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/userfullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Full name:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/orderid" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Username:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/userfullname" />
+
+    <TextView
+        android:id="@+id/usernumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Number:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/username" />
+
+    <TextView
+        android:id="@+id/useremail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Email:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/usernumber" />
+
+    <TextView
+        android:id="@+id/ordertype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Order:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/useremail" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="To be paid: Rs "
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/ordertype" />
+
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:layout_marginTop="100dp"
+        android:background="#d67601"
+        android:gravity="center"
+        android:text="Send OTP"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:onClick="onSend"/>
+
 </RelativeLayout>
