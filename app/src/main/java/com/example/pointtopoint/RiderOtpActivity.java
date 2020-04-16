@@ -33,6 +33,8 @@ public class RiderOtpActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private String OrderID;
+    private String UserID;
+    private String auserfullname,ausername,auserid,ausernumber,auseremail;
 
     final int SEND_SMS_PERMISSION_REQUEST_CODE = 1;
 
@@ -59,10 +61,23 @@ public class RiderOtpActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
-        //UserID=firebaseAuth.getCurrentUser().getUid();
+        UserID=firebaseAuth.getCurrentUser().getUid();
         OrderID=intent.getStringExtra("orderid");
 
-        DocumentReference docref=db.collection("orders").document(OrderID);
+        DocumentReference docref=db.collection("users").document(UserID);
+
+        docref.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                auserfullname=documentSnapshot.getString("name");
+                ausername= documentSnapshot.getString("Username");
+                ausernumber=documentSnapshot.getString("Mobilenumber");
+                auseremail=documentSnapshot.getString("Email");
+            }
+        });
+
+
+        docref=db.collection("orders").document(OrderID);
 
         docref.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -106,9 +121,18 @@ public class RiderOtpActivity extends AppCompatActivity {
 
             Map<String, Object> usermap = new HashMap<>();
             usermap.put("orderotp",otp);
+            usermap.put("riderfullname",auserfullname);
+            usermap.put("ridername",ausername);
+            usermap.put("ridernumber",ausernumber);
+            usermap.put("riderid",auserid);
+            usermap.put("rideremail",auseremail);
 
             DocumentReference docref=db.collection("orders").document(OrderID);
             docref.update(usermap);
+
+            firebaseAuth = FirebaseAuth.getInstance();
+            db=FirebaseFirestore.getInstance();
+
 
             Toast.makeText(this, "message sent to " + phoneNumber, Toast.LENGTH_SHORT).show();
         }else{
