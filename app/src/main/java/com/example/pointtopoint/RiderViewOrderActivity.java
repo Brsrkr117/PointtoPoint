@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -21,15 +24,31 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
     private static final String TAG = "here displaying";
     private RecyclerView mOrderlist;
+    private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private OrderListAdapter ordersListAdapter;
     private List<orders> ordersList;
+    private String UserID;
+    private String rad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rider_view_order);
         mOrderlist=(RecyclerView)findViewById(R.id.Order_list);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        db=FirebaseFirestore.getInstance();
+        UserID=firebaseAuth.getCurrentUser().getUid();
+
+        DocumentReference docref=db.collection("riders").document(UserID);
+        docref.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                rad=documentSnapshot.getString("radius");
+            }
+        });
+
         db=FirebaseFirestore.getInstance();
         ordersList=new ArrayList<>();
         ordersListAdapter= new OrderListAdapter(ordersList,this);
@@ -38,6 +57,7 @@ public class RiderViewOrderActivity extends AppCompatActivity {
         mOrderlist.setHasFixedSize(true);
         mOrderlist.setLayoutManager(new LinearLayoutManager(this));
         mOrderlist.setAdapter(ordersListAdapter);
+
 
         db=FirebaseFirestore.getInstance();
         db.collection("orders").addSnapshotListener(new EventListener<QuerySnapshot>() {

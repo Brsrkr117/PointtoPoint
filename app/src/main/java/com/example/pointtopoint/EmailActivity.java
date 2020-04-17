@@ -45,10 +45,10 @@ public class EmailActivity extends AppCompatActivity {
 
                 DocumentReference docref=db.collection("orders").document(OrderID);
                 docref.update(usermap);
-                Toast.makeText(EmailActivity.this, "Youhave confirmed Order delivery", Toast.LENGTH_LONG).show();
+                Toast.makeText(EmailActivity.this, "You have confirmed Order delivery", Toast.LENGTH_LONG).show();
                 finish();
-                firebaseAuth.signOut();
-                startActivity(new Intent(EmailActivity.this,LoginActivity.class));
+                //firebaseAuth.signOut();
+                startActivity(new Intent(EmailActivity.this,SecondActivity.class));
             }
         });
 
