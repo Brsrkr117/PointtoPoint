@@ -32,6 +32,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private String UserID;
     private String auserfullname,ausername,auserid,ausernumber,auseremail;
+    private String usertype;
 
 
     @Override
@@ -67,6 +68,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 ausername= documentSnapshot.getString("Username");
                 ausernumber=documentSnapshot.getString("Mobilenumber");
                 auseremail=documentSnapshot.getString("Email");
+                usertype=documentSnapshot.getString("CustomerType");
             }
         });
 

@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText mFullName;
     private EditText mMobileNumber;
     private EditText mEmail;
-    private Button UpdateButton;
+    private Button UpdateButton,goback;;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private String UserID;
@@ -46,6 +46,8 @@ public class ProfileActivity extends AppCompatActivity {
         mMobileNumber = findViewById(R.id.mMobileNumber);
         //mEmail = findViewById(R.id.mEmail);
         UpdateButton = findViewById(R.id.UpdateButton);
+        goback=(Button)findViewById(R.id.goback);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
@@ -96,11 +98,17 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 });
 
-
             }
         });
 
+        goback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(ProfileActivity.this, SecondActivity.class));
 
+            }
+        });
 
 
     }

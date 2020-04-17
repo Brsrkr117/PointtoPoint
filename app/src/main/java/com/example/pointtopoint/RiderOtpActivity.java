@@ -205,9 +205,17 @@ public class RiderOtpActivity extends AppCompatActivity {
                         startActivity(new Intent(RiderOtpActivity.this, LoginActivity.class));
                         Toast.makeText(RiderOtpActivity.this, "Sorry,Some other rider has been assigned.", Toast.LENGTH_LONG).show();
                     }
-                    else if(currentstatus.equals("confirmed"))
+                    else if(currentstatus.equals("confirmed")){
                         Toast.makeText(RiderOtpActivity.this, "User has confirmed ", Toast.LENGTH_LONG).show();
 
+                        //rider map
+
+
+                        /*finish();
+                        Intent intent = new Intent(getApplicationContext(), UserOtpActivity.class);
+                        intent.putExtra("orderid",OrderID);
+                        startActivity(intent);*/
+                    }
                 }
             }
         });

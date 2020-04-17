@@ -74,6 +74,11 @@ public class UserOtpActivity extends AppCompatActivity {
 
                                 docref3.update(usermap);
                                 Toast.makeText(UserOtpActivity.this, "Correct otp", Toast.LENGTH_LONG).show();
+
+                                finish();
+                                Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
+                                intent.putExtra("orderid",OrderID);
+                                startActivity(intent);
                             }
                             else{
                                 Toast.makeText(UserOtpActivity.this, "Incorrect otp", Toast.LENGTH_LONG).show();

@@ -18,4 +18,39 @@
         android:layout_marginTop="20dp"/>
 
 
+    <TextView
+        android:id="@+id/receive_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="You will soon receive an Email confirmation with relevant details"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/thankyou_message"/>
+
+    <ImageView
+        android:id="@+id/imgthnk"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/receive_email"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/thanks"
+        android:padding="30dp"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/confirmorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgthnk"
+        android:layout_marginTop="30dp"
+        android:background="#d67601"
+        android:gravity="center"
+        android:text="Confirm Delivery"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+
 </RelativeLayout>
