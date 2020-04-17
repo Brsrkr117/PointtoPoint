@@ -132,6 +132,7 @@ public class RiderOtpActivity extends AppCompatActivity {
             usermap.put("ridernumber",ausernumber);
             usermap.put("riderid",UserID);
             usermap.put("rideremail",auseremail);
+            usermap.put("orderstatus","assigned");
 
             DocumentReference docref=db.collection("orders").document(OrderID);
             docref.update(usermap);
@@ -162,14 +163,24 @@ public class RiderOtpActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot doc=task.getResult();
                     String currentstatus =doc.getString("orderstatus");
-                    if (currentstatus.equals("pending")){
+                    String assignedrider=doc.getString("riderid");
+                    if (currentstatus.equals("assigned") && UserID.equals(assignedrider)){
                         Toast.makeText(RiderOtpActivity.this, "Please wait for user to confirm OTP", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (currentstatus.equals("pending")){
+                        Toast.makeText(RiderOtpActivity.this, "User not assigned", Toast.LENGTH_SHORT).show();
                     }
                     else if(currentstatus.equals("cancelled")){
                         firebaseAuth.signOut();
                         finish();
                         startActivity(new Intent(RiderOtpActivity.this, LoginActivity.class));
                         Toast.makeText(RiderOtpActivity.this, "User has cancelled order", Toast.LENGTH_LONG).show();
+                    }
+                    else if(currentstatus.equals("assigned") && (!UserID.equals(assignedrider))){
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(RiderOtpActivity.this, LoginActivity.class));
+                        Toast.makeText(RiderOtpActivity.this, "Sorry,Some other rider has been assigned.", Toast.LENGTH_LONG).show();
                     }
                     else if(currentstatus.equals("confirmed"))
                         Toast.makeText(RiderOtpActivity.this, "User has confirmed ", Toast.LENGTH_LONG).show();
