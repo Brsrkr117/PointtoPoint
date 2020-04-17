@@ -121,6 +121,27 @@ public class RiderOtpActivity extends AppCompatActivity {
             return;
         }
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        db=FirebaseFirestore.getInstance();
+
+        DocumentReference docref1=db.collection("orders").document(OrderID);
+
+        db.collection("orders").document(OrderID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    if(doc.getString("orderstatus").equals("assigned")){
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(RiderOtpActivity.this, LoginActivity.class));
+                        Toast.makeText(RiderOtpActivity.this, "Sorry,Some other rider has been assigned.", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
+
+
         if(checkPermission(Manifest.permission.SEND_SMS)){
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNumber, null, smsMessage, null, null);
@@ -134,11 +155,13 @@ public class RiderOtpActivity extends AppCompatActivity {
             usermap.put("rideremail",auseremail);
             usermap.put("orderstatus","assigned");
 
+            firebaseAuth = FirebaseAuth.getInstance();
+            db=FirebaseFirestore.getInstance();
+
             DocumentReference docref=db.collection("orders").document(OrderID);
             docref.update(usermap);
 
-            firebaseAuth = FirebaseAuth.getInstance();
-            db=FirebaseFirestore.getInstance();
+
 
 
             Toast.makeText(this, "message sent to " + phoneNumber, Toast.LENGTH_SHORT).show();
