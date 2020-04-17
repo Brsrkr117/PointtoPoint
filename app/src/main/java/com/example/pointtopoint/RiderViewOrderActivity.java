@@ -38,7 +38,7 @@ public class RiderViewOrderActivity extends AppCompatActivity {
         mOrderlist.setHasFixedSize(true);
         mOrderlist.setLayoutManager(new LinearLayoutManager(this));
         mOrderlist.setAdapter(ordersListAdapter);
-
+        db=FirebaseFirestore.getInstance();
         db.collection("orders").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -50,14 +50,13 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                     if(doc.getType()==DocumentChange.Type.ADDED){
                        /* String name1=doc.getDocument().getString("Order id");
                         Log.d(TAG,"Order ID "+ name1);*/
-
                         orders orders =doc.getDocument().toObject(orders.class);
                         String tempordertype=orders.getOrdertype();
-
+                        String temporderstatus=orders.getOrderstatus();
 
                         //conditional recycler view
 
-                        if(tempordertype.equals("Non Veg Large")){
+                        if(temporderstatus.equals("pending")){
                             ordersList.add(orders);
                             ordersListAdapter.notifyDataSetChanged();
                         }

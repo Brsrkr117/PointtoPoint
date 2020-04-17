@@ -46,6 +46,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
                 intent.putExtra("orderid", ordersList.get(position).getOrderid());
                 intent.putExtra("ordertype", ordersList.get(position).getOrdertype());
                 mcontext.startActivity(intent);
+
             }
         });
 

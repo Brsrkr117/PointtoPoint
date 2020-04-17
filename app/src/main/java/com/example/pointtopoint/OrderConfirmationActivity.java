@@ -88,14 +88,15 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 db.collection("orders").add(order).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Map<String, Object> orderid = new HashMap<>();
-                        orderid.putIfAbsent("orderid",documentReference.getId());
+                        String passorderid=documentReference.getId();
+                        Map<String, Object> usermap = new HashMap<>();
+                        usermap.putIfAbsent("orderid",passorderid);
+                        db.collection("orders").document(passorderid).update(usermap);
 
-                        db.collection("orders").document(documentReference.getId()).update(orderid);
-
-                        Toast.makeText(OrderConfirmationActivity.this, "Order placed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OrderConfirmationActivity.this, "Order placed.Wait for OTP", Toast.LENGTH_SHORT).show();
+                        finish();
                         Intent intent = new Intent(getApplicationContext(), UserOtpActivity.class);
-                        intent.putExtra("orderid",documentReference.getId());
+                        intent.putExtra("orderid",passorderid);
                         startActivity(intent);
 
                     }

@@ -10,11 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -29,7 +32,7 @@ import java.util.Random;
 public class RiderOtpActivity extends AppCompatActivity {
 
     private TextView orderid,ordertype,pickuplocation,droplocation,usernumber,username,userfullname,price,useremail;
-    private Button sendotp;
+    private Button sendotp,checkwithuser;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private String OrderID;
@@ -53,6 +56,7 @@ public class RiderOtpActivity extends AppCompatActivity {
         price=(TextView)findViewById(R.id.price);
 
         sendotp=(Button)findViewById(R.id.send);
+        checkwithuser=(Button)findViewById(R.id.check_with_user);
 
 
         Intent intent = getIntent();
@@ -64,7 +68,7 @@ public class RiderOtpActivity extends AppCompatActivity {
         UserID=firebaseAuth.getCurrentUser().getUid();
         OrderID=intent.getStringExtra("orderid");
 
-        DocumentReference docref=db.collection("users").document(UserID);
+        DocumentReference docref=db.collection("riders").document(UserID);
 
         docref.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -73,6 +77,7 @@ public class RiderOtpActivity extends AppCompatActivity {
                 ausername= documentSnapshot.getString("Username");
                 ausernumber=documentSnapshot.getString("Mobilenumber");
                 auseremail=documentSnapshot.getString("Email");
+
             }
         });
 
@@ -92,14 +97,15 @@ public class RiderOtpActivity extends AppCompatActivity {
         });
 
 
+
         sendotp.setEnabled(false);
+
         if(checkPermission(Manifest.permission.SEND_SMS)){
             sendotp.setEnabled(true);
         }else{
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.SEND_SMS}, SEND_SMS_PERMISSION_REQUEST_CODE);
-        }
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, SEND_SMS_PERMISSION_REQUEST_CODE);
 
+        }
 
     }
 
@@ -124,7 +130,7 @@ public class RiderOtpActivity extends AppCompatActivity {
             usermap.put("riderfullname",auserfullname);
             usermap.put("ridername",ausername);
             usermap.put("ridernumber",ausernumber);
-            usermap.put("riderid",auserid);
+            usermap.put("riderid",UserID);
             usermap.put("rideremail",auseremail);
 
             DocumentReference docref=db.collection("orders").document(OrderID);
@@ -145,5 +151,34 @@ public class RiderOtpActivity extends AppCompatActivity {
         return (check == PackageManager.PERMISSION_GRANTED);
     }
 
+
+    public void oncheck(View v){
+        firebaseAuth = FirebaseAuth.getInstance();
+        db=FirebaseFirestore.getInstance();
+
+        db.collection("orders").document(OrderID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot doc=task.getResult();
+                    String currentstatus =doc.getString("orderstatus");
+                    if (currentstatus.equals("pending")){
+                        Toast.makeText(RiderOtpActivity.this, "Please wait for user to confirm OTP", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(currentstatus.equals("cancelled")){
+                        firebaseAuth.signOut();
+                        finish();
+                        startActivity(new Intent(RiderOtpActivity.this, LoginActivity.class));
+                        Toast.makeText(RiderOtpActivity.this, "User has cancelled order", Toast.LENGTH_LONG).show();
+                    }
+                    else if(currentstatus.equals("confirmed"))
+                        Toast.makeText(RiderOtpActivity.this, "User has confirmed ", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+
+
+    }
 
 }

@@ -89,12 +89,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/price"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:background="#d67601"
         android:gravity="center"
         android:text="Send OTP"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:onClick="onSend"/>
+
+    <Button
+        android:id="@+id/check_with_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/send"
+        android:layout_marginTop="30dp"
+        android:background="#d67601"
+        android:gravity="center"
+        android:text="Check with user"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:onClick="oncheck"/>
 
 </RelativeLayout>

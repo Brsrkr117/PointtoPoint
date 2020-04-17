@@ -14,10 +14,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.177" />
+        app:layout_constraintVertical_bias="0.074" />
 
     <Button
         android:id="@+id/buttonRsignout"
@@ -26,10 +26,10 @@
         android:text="Sign Out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.798" />
+        app:layout_constraintVertical_bias="0.854" />
 
     <Button
         android:id="@+id/btnViewOrder"
@@ -38,9 +38,10 @@
         android:text="View Orders"
         app:layout_constraintBottom_toTopOf="@+id/buttonRsignout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.537" />
+        app:layout_constraintVertical_bias="0.645" />
 
     <Button
         android:id="@+id/btnviewprof"
@@ -51,4 +52,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnViewOrder" />
+
+    <EditText
+        android:id="@+id/etradius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Set pickup radius"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.617" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
