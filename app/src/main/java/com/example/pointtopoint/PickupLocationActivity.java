@@ -92,13 +92,12 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
 // This is done by using an image view with the default marker found in the SDK. You can
 // swap out for your own marker image, just make sure it matches up with the dropped marker.
             hoveringMarker = new ImageView(PickupLocationActivity.this);
-            hoveringMarker.setImageResource(R.mipmap.red_marker);
+            hoveringMarker.setImageResource(R.drawable.red_marker);
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER);
             hoveringMarker.setLayoutParams(params);
             mapView.addView(hoveringMarker);
-
 // Initialize, but don't show, a SymbolLayer for the marker icon which will represent a selected location.
             initDroppedMarker(style);
 
@@ -156,7 +155,7 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
     private void initDroppedMarker(@NonNull Style loadedMapStyle) {
 // Add the marker image to map
         loadedMapStyle.addImage("dropped-icon-image", BitmapFactory.decodeResource(
-                getResources(), R.mipmap.red_marker));
+                getResources(), R.drawable.red_marker));
         loadedMapStyle.addSource(new GeoJsonSource("dropped-marker-source-id"));
         loadedMapStyle.addLayer(new SymbolLayer(DROPPED_MARKER_LAYER_ID,
                 "dropped-marker-source-id").withProperties(
