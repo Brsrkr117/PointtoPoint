@@ -38,6 +38,7 @@ public class RiderViewOrderActivity extends AppCompatActivity {
         mOrderlist.setHasFixedSize(true);
         mOrderlist.setLayoutManager(new LinearLayoutManager(this));
         mOrderlist.setAdapter(ordersListAdapter);
+
         db=FirebaseFirestore.getInstance();
         db.collection("orders").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -53,6 +54,14 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                         orders orders =doc.getDocument().toObject(orders.class);
                         String tempordertype=orders.getOrdertype();
                         String temporderstatus=orders.getOrderstatus();
+
+                        /*String pickuplat=orders.getPickuplat();
+                        String pickuplong=orders.getPickuplong();
+                        String droplat=orders.getDroplat();
+                        String droplong=orders.getDroplong();
+
+                        String pickupaddr=orders.getPickaddr();
+                        String dropaddr=orders.getDropaddr();*/
 
                         //conditional recycler view
 

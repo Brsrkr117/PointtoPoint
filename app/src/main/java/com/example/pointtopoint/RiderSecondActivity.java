@@ -48,14 +48,12 @@ public class RiderSecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String rad=radius.getText().toString();
-                //finish();
                 Intent intent = new Intent(getApplicationContext(), RiderViewOrderActivity.class);
                 //intent.putExtra("radius",rad);
                 //finish();
                 startActivity(intent);
             }
         });
-
 
     }
     private void Logout(){
