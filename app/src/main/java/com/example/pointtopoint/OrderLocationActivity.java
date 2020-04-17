@@ -129,7 +129,7 @@ public class OrderLocationActivity extends AppCompatActivity
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.nav_menu, menu);
+        getMenuInflater().inflate(R.menu.current_location_menu, menu);
         return true;
     }
 
@@ -174,8 +174,8 @@ public class OrderLocationActivity extends AppCompatActivity
                 TextView title = infoWindow.findViewById(R.id.title);
                 title.setText(marker.getTitle());
 
-                //TextView snippet = infoWindow.findViewById(R.id.snippet);
-                //snippet.setText(marker.getSnippet());
+                TextView snippet = infoWindow.findViewById(R.id.snippet);
+                snippet.setText(marker.getSnippet());
 
                 return infoWindow;
             }
