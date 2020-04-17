@@ -46,7 +46,10 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.android.libraries.places:places:2.2.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
-
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-services:5.1.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-sdk-core:5.1.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.1.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OrderConfirmationActivity">
+
+    <TextView
+        android:id="@+id/OrderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Order Summary"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ordertype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/OrderText"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="Title Text"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        />
+
+    <TextView
+        android:id="@+id/fullprice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ordertype"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Title Text"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        />
+
+    <TextView
+        android:id="@+id/pickuplocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fullprice"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Title Text"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        />
+
+    <TextView
+        android:id="@+id/droplocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickuplocation"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Title Text"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/confirmorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/droplocation"
+        android:layout_marginTop="40dp"
+        android:background="#d67601"
+        android:gravity="center"
+        android:text="Place Order"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+</RelativeLayout>

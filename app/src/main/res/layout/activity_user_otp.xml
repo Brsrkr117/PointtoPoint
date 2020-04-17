@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".UserOtpActivity">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter the OTP you have received "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/etotp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_below="@id/tv1"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btnconfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm order"
+        android:gravity="center"
+        android:layout_below="@id/etotp"
+        android:layout_marginTop="50dp"
+         />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Not received otp?Cancel and try again"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_below="@id/btnconfirm"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btncancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cancel"
+        android:gravity="center"
+        android:layout_below="@id/tv2"
+        android:layout_marginTop="50dp" />
+
+
+</RelativeLayout>

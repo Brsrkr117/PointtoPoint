@@ -31,7 +31,6 @@ public class ItemListActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
 
-
         MyAdapter adapter = new MyAdapter(ItemListActivity.this, mTitle, mDescription, images);
         listView.setAdapter(adapter);
 
@@ -43,9 +42,9 @@ public class ItemListActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), OrderViewActivity.class);
                     Bundle bundle = new Bundle();
                     //bundle.putInt("position",0);
-                    bundle.putString("title",mTitle[0]);
-                    bundle.putString("description", mDescription[0]);
-                    intent.putExtras(bundle);
+                    /*bundle.putString("title",mTitle[0]);
+                    bundle.putString("description", mDescription[0]);*/
+                    //intent.putExtras(bundle);
                     intent.putExtra("title", mTitle[0]);
                     intent.putExtra("description", mDescription[0]);
                     intent.putExtra("position", ""+0);

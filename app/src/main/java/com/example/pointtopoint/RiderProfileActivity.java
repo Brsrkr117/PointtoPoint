@@ -29,7 +29,7 @@ public class RiderProfileActivity extends AppCompatActivity {
     private EditText mFullName;
     private EditText mMobileNumber;
     private EditText mEmail;
-    private Button UpdateButton;
+    private Button UpdateButton,goback;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
     private String UserID;
@@ -42,7 +42,8 @@ public class RiderProfileActivity extends AppCompatActivity {
         mFullName = findViewById(R.id.mFullName);
         mMobileNumber = findViewById(R.id.mMobileNumber);
         //mEmail = findViewById(R.id.mEmail);
-        UpdateButton = findViewById(R.id.UpdateButton);
+        UpdateButton = (Button)findViewById(R.id.UpdateButton);
+        goback=(Button)findViewById(R.id.goback);
 
         firebaseAuth = FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
@@ -68,7 +69,6 @@ public class RiderProfileActivity extends AppCompatActivity {
                 String newmobilenumber=mMobileNumber.getText().toString();
 
                 Map<String, Object> usermap = new HashMap<>();
-
                 usermap.put("name",newfullname);
                 usermap.put("Username",newusername);
                 usermap.put("Mobilenumber",newmobilenumber);
@@ -95,5 +95,17 @@ public class RiderProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        goback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(RiderProfileActivity.this, RiderSecondActivity.class));
+
+            }
+        });
+
+
+
     }
 }

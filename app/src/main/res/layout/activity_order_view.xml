@@ -58,7 +58,7 @@
         android:layout_marginTop="74dp"
         android:background="#d67601"
         android:gravity="center"
-        android:text="Place Order"
+        android:text="Select locations "
         android:textColor="#ffffff"
         android:textSize="20sp" />
     <Button

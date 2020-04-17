@@ -45,7 +45,7 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
-                                      <entry key="foregroundImage">
+                                      <entry key="foregroundClipArt">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
@@ -56,17 +56,26 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                                <entry key="scalingPercent" value="69" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                     </map>
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\susha\Downloads\Redmarker.png" />
-                                      <entry key="foregroundLayerName" value="first" />
-                                      <entry key="generateLegacyIcon" value="false" />
-                                      <entry key="generatePlayStoreIcon" value="false" />
-                                      <entry key="generateRoundIcon" value="false" />
-                                      <entry key="legacyIconShape" value="NONE" />
+                                      <entry key="foregroundImage" value="C:\Users\susha\Downloads\map-point-google-map-marker-gif-11562858751s4qufnxuml.png" />
                                       <entry key="outputName" value="red_marker" />
+                                      <entry key="previewDensity" value="MEDIUM" />
+                                      <entry key="showSafeZone" value="false" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -122,6 +131,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>
