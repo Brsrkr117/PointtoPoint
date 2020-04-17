@@ -58,6 +58,9 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 public class PickupLocationActivity extends AppCompatActivity implements PermissionsListener, OnMapReadyCallback {
 
     private static final String DROPPED_MARKER_LAYER_ID = "DROPPED_MARKER_LAYER_ID";
+    // store pickup location details
+    protected String lat;
+    protected String lng;
     private MapView mapView;
     private MapboxMap mapboxMap;
     private Button selectLocationButton;
@@ -250,6 +253,10 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
             client.enqueueCall(new Callback<GeocodingResponse>() {
                 @Override
                 public void onResponse(Call<GeocodingResponse> call, Response<GeocodingResponse> response) {
+
+                    lat = Double.toString(point.latitude());
+                    lng = Double.toString(point.longitude());
+
 
                     if (response.body() != null) {
                         List<CarmenFeature> results = response.body().features();

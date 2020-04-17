@@ -22,7 +22,8 @@
         <activity android:name=".OrderLocationActivity"/>
 
         <activity android:name=".UserOtpActivity"/>
-        <activity android:name=".PickupLocationActivity" />
+        <activity android:name=".PickupLocationActivity"
+            android:exported="true"/>
         <activity android:name=".RiderOtpActivity" />
         <activity android:name=".OrderConfirmationActivity" />
         <activity android:name=".EmailActivity" />

@@ -32,7 +32,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -64,13 +63,10 @@ public class OrderLocationActivity extends AppCompatActivity
     // Keys for storing activity state.
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
+    //Store current location details
+    protected String lat;
+    protected String lng;
 
-    // Used for selecting the current place.
-    private static final int M_MAX_ENTRIES = 5;
-    private String[] mLikelyPlaceNames;
-    private String[] mLikelyPlaceAddresses;
-    private List[] mLikelyPlaceAttributions;
-    private LatLng[] mLikelyPlaceLatLngs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -279,8 +275,8 @@ public class OrderLocationActivity extends AppCompatActivity
      */
     private void openPlacesDialog() {
         // Ask the user to choose the place where they are now.
-      String lat = Double.toString(mLastKnownLocation.getLatitude());
-      String lng = Double.toString(mLastKnownLocation.getLongitude());
+       lat = Double.toString(mLastKnownLocation.getLatitude());
+       lng = Double.toString(mLastKnownLocation.getLongitude());
       startActivity(new Intent(OrderLocationActivity.this, PickupLocationActivity.class));
     }
 
