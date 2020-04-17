@@ -34,7 +34,7 @@
             android:value="@string/maps_key" />
 
         <activity android:name=".RiderViewOrderActivity" />
-        <activity android:name=".OrderLocationActivity" />
+        <!--<activity android:name=".OrderLocationActivity" />-->
 
         <activity android:name=".OrderViewActivity" />
         <activity
