@@ -305,8 +305,7 @@
                     android:textColor="#ffffff"
                     android:layout_marginTop="30dp"
 
-                    android:background="#d678"
-                    android:id="@+id/SignOutButton"/>
+                    android:background="#d678" />
 
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +14,8 @@ public class RiderSecondActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private Button signout;
     private Button Viewprofile;
+    private Button Vieworders;
+    private EditText radius;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +24,10 @@ public class RiderSecondActivity extends AppCompatActivity {
 
 
         firebaseAuth = FirebaseAuth.getInstance();
-        signout=(Button)(Button) findViewById(R.id.buttonRsignout);
-        Viewprofile=(Button)(Button) findViewById(R.id.btnviewprof);
+        signout=(Button)findViewById(R.id.buttonRsignout);
+        Viewprofile=(Button) findViewById(R.id.btnviewprof);
+        Vieworders=(Button) findViewById(R.id.btnViewOrder);
+        radius=(EditText) findViewById(R.id.etradius);
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,8 +44,16 @@ public class RiderSecondActivity extends AppCompatActivity {
             }
         });
 
-
-
+        Vieworders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String rad=radius.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), RiderViewOrderActivity.class);
+                //intent.putExtra("radius",rad);
+                //finish();
+                startActivity(intent);
+            }
+        });
 
     }
     private void Logout(){

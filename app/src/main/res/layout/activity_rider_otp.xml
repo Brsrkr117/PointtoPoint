@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RiderOtpActivity">
+
+
+    <TextView
+        android:id="@+id/orderid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Order Summary"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/userfullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Full name:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/orderid" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Username:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/userfullname" />
+
+    <TextView
+        android:id="@+id/usernumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Number:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/username" />
+
+    <TextView
+        android:id="@+id/useremail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Email:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/usernumber" />
+
+    <TextView
+        android:id="@+id/ordertype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="Order:"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/useremail" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:text="To be paid: Rs "
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/ordertype" />
+
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/price"
+        android:layout_marginTop="40dp"
+        android:background="#d67601"
+        android:gravity="center"
+        android:text="Send OTP"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:onClick="onSend"/>
+
+    <Button
+        android:id="@+id/check_with_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/send"
+        android:layout_marginTop="30dp"
+        android:background="#d67601"
+        android:gravity="center"
+        android:text="Check with user"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:onClick="oncheck"/>
+
+</RelativeLayout>
