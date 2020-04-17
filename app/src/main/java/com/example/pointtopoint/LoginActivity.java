@@ -1,7 +1,9 @@
 package com.example.pointtopoint;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        ActivityCompat.requestPermissions(LoginActivity.this, new String[]{Manifest.permission.SEND_SMS,Manifest.permission.READ_SMS}, PackageManager.PERMISSION_GRANTED);
+
         txtemail = (EditText) findViewById(R.id.EmailRLoginEditText);
         txtpassword = (EditText) findViewById(R.id.PasswordRLoginEditText);
         btn_login = (Button) findViewById(R.id.RLoginButton);
@@ -49,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             startActivity(new Intent(LoginActivity.this, SecondActivity.class));
         }
+
+
 
         /*mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
