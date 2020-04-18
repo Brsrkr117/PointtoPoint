@@ -72,6 +72,7 @@ public class RiderSecondActivity extends AppCompatActivity {
 
                     Bundle bundle = new Bundle();
                     bundle.putString("radius",rad);
+
                     Intent intent = new Intent(getApplicationContext(), RiderViewOrderActivity.class);
                     intent.putExtras(bundle);
                     //finish();
