@@ -22,7 +22,8 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/maps_key" />
-        <activity android:name=".OrderLocationActivity"/>
+        <activity android:name=".OrderLocationActivity"
+            android:exported="true"/>
 
         <activity android:name=".UserOtpActivity"></activity>
         <activity android:name=".RiderOtpActivity" />
