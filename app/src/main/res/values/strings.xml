@@ -13,6 +13,6 @@
     <string name="location_picker_select_location_button_select">Select Location</string>
     <string name="user_location_permission_explanation">Please Allow Location</string>
     <string name="user_location_permission_not_granted">Location Permission not Granted</string>
-    <string name="location_picker_place_name_result" />
+    <string name="location_picker_place_name_result">%s</string>
     <string name="location_picker_dropped_marker_snippet_no_results">No Results</string>
 </resources>

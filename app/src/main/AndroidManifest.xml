@@ -15,19 +15,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".RiderLocationActivity"></activity>
+        <activity android:name=".Rider" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/maps_key" />
-        <activity android:name=".OrderLocationActivity"/>
 
-        <activity android:name=".UserOtpActivity"/>
-        <activity android:name=".PickupLocationActivity"
-            android:exported="true"/>
+        <activity android:name=".OrderLocationActivity" />
+        <activity android:name=".UserOtpActivity" />
+        <activity
+            android:name=".PickupLocationActivity"
+            android:exported="true" />
         <activity android:name=".RiderOtpActivity" />
         <activity android:name=".OrderConfirmationActivity" />
         <activity android:name=".EmailActivity" />
-
         <activity android:name=".RiderViewOrderActivity" />
         <activity android:name=".OrderViewActivity" />
         <activity
