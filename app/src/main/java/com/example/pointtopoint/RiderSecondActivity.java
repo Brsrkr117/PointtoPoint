@@ -71,8 +71,11 @@ public class RiderSecondActivity extends AppCompatActivity {
                     db.collection("riders").document(UserID).update(usermap);
 
 
+                    Bundle bundle = new Bundle();
+                    bundle.putString("radius",rad);
+
                     Intent intent = new Intent(getApplicationContext(), RiderViewOrderActivity.class);
-                    //intent.putExtra("radius",rad);
+                    intent.putExtras(bundle);
                     //finish();
                     startActivity(intent);
                 }

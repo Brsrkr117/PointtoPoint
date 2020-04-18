@@ -5,6 +5,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,16 +16,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.Task;
-
 import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -65,13 +61,10 @@ public class RiderViewOrderActivity extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
         UserID=firebaseAuth.getCurrentUser().getUid();
 
-        DocumentReference docref=db.collection("riders").document(UserID);
-        docref.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                rad=documentSnapshot.getString("radius");
-            }
-        });
+        Bundle b = getIntent().getExtras();
+        rad = b.getString("radius");
+
+        Toast.makeText(RiderViewOrderActivity.this,"Your radius is " + rad +"km", Toast.LENGTH_LONG).show();
 
         db=FirebaseFirestore.getInstance();
         ordersList=new ArrayList<>();
@@ -125,10 +118,9 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
     }
     private void getDeviceLocation() {
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
+         /* Get the best and most recent location of the device, which may be null in rare
+          cases when a location is not available.*/
+
         try {
             if (mLocationPermissionGranted) {
                 Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();

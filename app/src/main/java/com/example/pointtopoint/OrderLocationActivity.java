@@ -83,6 +83,9 @@ public class OrderLocationActivity extends AppCompatActivity
     protected String lng;
 
 
+    //orderdetails
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -336,6 +339,9 @@ public class OrderLocationActivity extends AppCompatActivity
         // Ask the user to choose the place where they are now.
        lat = Double.toString(mLastKnownLocation.getLatitude());
        lng = Double.toString(mLastKnownLocation.getLongitude());
+
+
+
       startActivity(new Intent(OrderLocationActivity.this, PickupLocationActivity.class));
     }
 
