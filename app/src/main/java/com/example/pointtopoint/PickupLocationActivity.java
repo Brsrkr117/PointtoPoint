@@ -3,6 +3,8 @@ package com.example.pointtopoint;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -142,6 +144,24 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
             });
         });
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.current_location_menu, menu);
+        return true;
+    }
+
+    /**
+     * Handles a click on the menu option to get a place.
+     * @param item The menu item to handle.
+     * @return Boolean.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.option_get_place) {
+            //showCurrentPlace();
+        }
+        return true;
+    }
+
 
     private void initDroppedMarker(@NonNull Style loadedMapStyle) {
 // Add the marker image to map
@@ -223,10 +243,6 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
             finish();
         }
     }
-
-
-
-
 
     @SuppressWarnings( {"MissingPermission"})
     private void enableLocationPlugin(@NonNull Style loadedMapStyle) {

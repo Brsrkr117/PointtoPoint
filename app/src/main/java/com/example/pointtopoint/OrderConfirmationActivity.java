@@ -1,8 +1,11 @@
 package com.example.pointtopoint;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,7 +26,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+
+
+
+
+
+
 public class OrderConfirmationActivity extends AppCompatActivity {
     private TextView ordertype,fullprice,pickuplocation,droplocation;
     private Button Placeorder;
@@ -33,6 +44,39 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private String auserfullname,ausername,auserid,ausernumber,auseremail;
     private String usertype;
 
+    protected String Getaddress(double latitude, double longitude) {
+        StringBuffer msg = new StringBuffer();
+
+        //call GeoCoder getFromLocation to get address
+        //returns list of addresses, take first one and send info to result receiver
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses = null;
+
+        try {
+            addresses = geocoder.getFromLocation(
+                    latitude,
+                    longitude,
+                    1);
+        } catch (Exception ioException) {
+            Log.e("", "Error in getting address for the location");
+        }
+
+        if (addresses == null || addresses.size() == 0) {
+            msg.append("No address found for the location");
+
+        } else {
+            Address address = addresses.get(0);
+            msg.append(address.getFeatureName());
+            msg.append(",");
+            msg.append(address.getThoroughfare());
+            msg.append(",");
+            msg.append(address.getLocality());
+            msg.append(",");
+            msg.append(address.getSubAdminArea());
+
+        }
+        return msg.toString();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
