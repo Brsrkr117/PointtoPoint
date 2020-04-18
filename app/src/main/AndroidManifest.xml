@@ -3,7 +3,11 @@
     package="com.example.pointtopoint">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
 
     <meta-data
         android:name="firebase_analytics_collection_enabled"
@@ -22,6 +26,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/maps_key" />
+        <activity android:name=".OrderLocationActivity"
+            android:exported="true"/>
+
 
         <activity android:name=".OrderLocationActivity" />
         <activity android:name=".UserOtpActivity" />
