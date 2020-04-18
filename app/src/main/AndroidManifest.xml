@@ -3,6 +3,7 @@
     package="com.example.pointtopoint">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <meta-data
         android:name="firebase_analytics_collection_enabled"

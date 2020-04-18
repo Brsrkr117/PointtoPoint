@@ -24,7 +24,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
-
 public class OrderConfirmationActivity extends AppCompatActivity {
     private TextView ordertype,fullprice,pickuplocation,droplocation;
     private Button Placeorder;
