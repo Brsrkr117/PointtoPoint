@@ -26,8 +26,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -112,12 +110,12 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
                         
                         Location pickup = new Location("");
-                        pickup.setLatitude(lat);
-                        pickup.setLongitude(lng);
-                        float distance = currentLocation.distanceTo(pickup);
-                        return distance < Float.parseFloat(rad);
+                        pickup.setLatitude(Double.parseDouble(pickuplat));
+                        pickup.setLongitude(Double.parseDouble(pickuplong));
+                        float distance = mLastKnownLocation.distanceTo(pickup);
 
-                        if(temporderstatus.equals("pending") && orderInRad(Double.parseDouble(droplat),Double.parseDouble(droplat))){
+
+                        if(temporderstatus.equals("pending") && distance < Float.parseFloat(rad)){
                             ordersList.add(orders);
                             ordersListAdapter.notifyDataSetChanged();
                         }
@@ -131,13 +129,7 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
 
     }
-    private boolean orderInRad(@NotNull Location currentLocation, double lat, double lng){
-        Location pickup = new Location("");
-        pickup.setLatitude(lat);
-        pickup.setLongitude(lng);
-        float distance = currentLocation.distanceTo(pickup);
-        return distance < Float.parseFloat(rad);
-    }
+   
     private void getDeviceLocation() {
         /*
          * Get the best and most recent location of the device, which may be null in rare
