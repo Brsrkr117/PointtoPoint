@@ -161,7 +161,7 @@ public class RiderLocationActivity extends AppCompatActivity
             }
         });
 
-        /*LatLng pickUp = new LatLng(pickuplat,pickuplong);
+        LatLng pickUp = new LatLng(pickuplat,pickuplong);
         mMap.addMarker(new MarkerOptions().position(pickUp)
                 .title("PickUp Location")
                 .snippet(pickupaddress));
@@ -169,7 +169,7 @@ public class RiderLocationActivity extends AppCompatActivity
         mMap.addMarker(new MarkerOptions().position(drop)
                 .title("Drop Location")
                 .snippet(dropaddress));
-*/
+
         // Prompt the user for permission.
         getLocationPermission();
 
