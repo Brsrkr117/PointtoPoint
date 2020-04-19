@@ -16,13 +16,10 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.Task;
-
 import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -49,7 +46,7 @@ public class RiderViewOrderActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private double currentLat;
     private double currentLng;
-    float distance;
+
 
     private String UserID;
     private String rad;
@@ -80,6 +77,8 @@ public class RiderViewOrderActivity extends AppCompatActivity {
         mOrderlist.setAdapter(ordersListAdapter);
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         mFusedLocationProviderClient.getLastLocation();
+        getLocationPermission();
+        getDeviceLocation();
 
         db=FirebaseFirestore.getInstance();
         db.collection("orders").addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -97,13 +96,13 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                         String tempordertype=orders.getOrdertype();
                         String temporderstatus=orders.getOrderstatus();
 
-                        /*String pickuplat=orders.getPickuplat();
+                        String pickuplat=orders.getPickuplat();
                         String pickuplong=orders.getPickuplong();
                         String droplat=orders.getDroplat();
                         String droplong=orders.getDroplong();
 
                         String pickupaddr=orders.getPickaddr();
-                        String dropaddr=orders.getDropaddr();*/
+                        String dropaddr=orders.getDropaddr();
 
                         //conditional recycler view
 
@@ -121,6 +120,13 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
 
     }
+    private boolean orderInRad(Location currentLocation, double lat, double lng){
+        Location pickup = new Location("");
+        pickup.setLatitude(lat);
+        pickup.setLongitude(lng);
+        float distance = currentLocation.distanceTo(pickup);
+        return distance > Float.parseFloat(rad);
+    }
     private void getDeviceLocation() {
         /*
          * Get the best and most recent location of the device, which may be null in rare
@@ -134,8 +140,7 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                         // Set the map's camera position to the current location of the device.
                         mLastKnownLocation = task.getResult();
                         if (mLastKnownLocation != null) {
-                            currentLat = mLastKnownLocation.getLatitude();
-                            currentLng = mLastKnownLocation.getLatitude();
+                            Toast.makeText(RiderViewOrderActivity.this,"Location Detected",Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Log.d(TAG, "Current location is null. Using defaults.");

@@ -175,7 +175,7 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_get_place) {
-            
+
             LatLng pickup = new LatLng();
             pickup.setLatitude(Double.parseDouble(lat));
             pickup.setLongitude(Double.parseDouble(lng));
