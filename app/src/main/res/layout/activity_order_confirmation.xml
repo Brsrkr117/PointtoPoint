@@ -49,7 +49,7 @@
         android:gravity="center"
         android:text="Title Text"
         android:textColor="#000000"
-        android:textSize="28sp"
+        android:textSize="20sp"
         />
 
     <TextView
@@ -61,7 +61,7 @@
         android:gravity="center"
         android:text="Title Text"
         android:textColor="#000000"
-        android:textSize="28sp"
+        android:textSize="18sp"
         />
 
     <TextView
@@ -73,7 +73,7 @@
         android:gravity="center"
         android:text="Title Text"
         android:textColor="#000000"
-        android:textSize="28sp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/confirmorder"

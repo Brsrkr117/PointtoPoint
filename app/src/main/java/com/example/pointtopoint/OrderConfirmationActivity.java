@@ -141,7 +141,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             double tempprice = Double.parseDouble(price);
             tempprice *= (0.8);
             price=Double.toString(tempprice);
-            fullprice.setText("To be paid:Rs " + price);
+            fullprice.setText("To be paid:Rs " + price + "(discount applied)");
         }
         else{
             fullprice.setText("To be paid:Rs " + price);
