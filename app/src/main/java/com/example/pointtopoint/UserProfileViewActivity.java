@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class UserProfileViewActivity extends AppCompatActivity {
-    private TextView profileName, profileUsername, profileEmail,profileMobileNumber;
+    private TextView profileName, profileUsername, profileEmail,profileMobileNumber,registertype;
     private Button profileUpdate, changePassword,goback;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
@@ -32,6 +32,7 @@ public class UserProfileViewActivity extends AppCompatActivity {
         profileUsername = findViewById(R.id.tvProfileUsername);
         profileEmail = findViewById(R.id.tvProfileEmail);
         profileMobileNumber = findViewById(R.id.tvMobileNumber);
+        registertype=findViewById(R.id.customertype);
         profileUpdate = findViewById(R.id.btnProfileUpdate);
         changePassword = findViewById(R.id.btnChangePassword);
         goback = findViewById(R.id.btnback);
@@ -49,6 +50,7 @@ public class UserProfileViewActivity extends AppCompatActivity {
                 profileUsername.setText("Username: " + documentSnapshot.getString("Username"));
                 profileMobileNumber.setText("Mobile Number: " + documentSnapshot.getString("Mobilenumber"));
                 profileEmail.setText("Email: " + documentSnapshot.getString("Email"));
+                registertype.setText("Customer Type: " + documentSnapshot.getString("CustomerType"));
             }
         });
 

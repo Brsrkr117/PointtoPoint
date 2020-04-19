@@ -143,6 +143,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         });
 
         String comp=customertype.getText().toString();
+
         if(comp.equals("Regular")){
             double tempprice = Double.parseDouble(price);
             tempprice *= (0.8);
