@@ -121,6 +121,8 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
 
 // Hide the hovering red hovering ImageView marker
                     hoveringMarker.setVisibility(View.INVISIBLE);
+                    lat = Double.toString(mapTargetLatLng.getLatitude());
+                    lng = Double.toString(mapTargetLatLng.getLongitude());
 
 // Transform the appearance of the button to become the cancel button
                     selectLocationButton.setBackgroundColor(
@@ -172,15 +174,15 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        LatLng pickup = new LatLng();
-        pickup.setLatitude(Double.parseDouble(lat));
-        pickup.setLongitude(Double.parseDouble(lng));
-        LatLng drop = new LatLng();
-        drop.setLatitude(Double.parseDouble(dlat));
-        drop.setLongitude(Double.parseDouble(dlng));
-        double distance = pickup.distanceTo(drop);
-        price = Double.toString(Double.parseDouble(price)+distance*0.0040);
         if (item.getItemId() == R.id.option_get_place) {
+            LatLng pickup = new LatLng();
+            pickup.setLatitude(Double.parseDouble(lat));
+            pickup.setLongitude(Double.parseDouble(lng));
+            LatLng drop = new LatLng();
+            drop.setLatitude(Double.parseDouble(dlat));
+            drop.setLongitude(Double.parseDouble(dlng));
+            double distance = pickup.distanceTo(drop);
+            price = Double.toString(Double.parseDouble(price)+distance*0.0040);
             Intent intent = new Intent(PickupLocationActivity.this, OrderConfirmationActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("dlat",dlat);
