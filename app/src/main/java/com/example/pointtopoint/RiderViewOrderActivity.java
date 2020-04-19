@@ -26,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -120,11 +122,11 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
 
     }
-    private boolean orderInRad( double lat, double lng){
+    private boolean orderInRad(@NotNull Location currentLocation, double lat, double lng){
         Location pickup = new Location("");
         pickup.setLatitude(lat);
         pickup.setLongitude(lng);
-        float distance = mLastKnownLocation.distanceTo(pickup);
+        float distance = currentLocation.distanceTo(pickup);
         return distance < Float.parseFloat(rad);
     }
     private void getDeviceLocation() {
