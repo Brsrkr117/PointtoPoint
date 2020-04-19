@@ -318,7 +318,6 @@ public class OrderLocationActivity extends AppCompatActivity
                         }
                     }
                     Toast.makeText(OrderLocationActivity.this, mLikelyPlaceAddresses[1], Toast.LENGTH_LONG).show();
-                    OrderLocationActivity.this.openPlacesDialog();
                 }
                 else {
                     Log.e(TAG, "Exception: %s", task.getException());
