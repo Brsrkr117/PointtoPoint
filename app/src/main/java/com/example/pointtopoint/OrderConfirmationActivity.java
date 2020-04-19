@@ -36,7 +36,7 @@ import java.util.Map;
 
 
 public class OrderConfirmationActivity extends AppCompatActivity {
-    private TextView ordertype,fullprice,pickuplocation,droplocation;
+    private TextView ordertype,fullprice,customertype,pickuplocation,droplocation;
     private Button Placeorder;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
@@ -85,9 +85,11 @@ public class OrderConfirmationActivity extends AppCompatActivity {
 
         ordertype = findViewById(R.id.ordertype);
         fullprice= findViewById(R.id.fullprice);
+        customertype=findViewById(R.id.customertype);
         pickuplocation= findViewById(R.id.pickuplocation);
         droplocation= findViewById(R.id.droplocation);
         Placeorder=findViewById(R.id.confirmorder);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
@@ -112,6 +114,10 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 ausernumber=documentSnapshot.getString("Mobilenumber");
                 auseremail=documentSnapshot.getString("Email");
                 usertype=documentSnapshot.getString("CustomerType");
+
+
+                customertype.setText(documentSnapshot.getString("CustomerType"));
+
             }
         });
 
