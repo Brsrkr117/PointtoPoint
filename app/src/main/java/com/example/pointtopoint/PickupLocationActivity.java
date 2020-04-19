@@ -121,8 +121,6 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
 
 // Hide the hovering red hovering ImageView marker
                     hoveringMarker.setVisibility(View.INVISIBLE);
-                    lat = Double.toString(mapTargetLatLng.getLatitude());
-                    lng = Double.toString(mapTargetLatLng.getLongitude());
 
 // Transform the appearance of the button to become the cancel button
                     selectLocationButton.setBackgroundColor(
@@ -142,6 +140,8 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
                     }
 
 // Use the map camera target's coordinates to make a reverse geocoding search
+                    lat = Double.toString(mapTargetLatLng.getLatitude());
+                    lng = Double.toString(mapTargetLatLng.getLongitude());
 
                 } else {
 
@@ -175,6 +175,7 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_get_place) {
+            
             LatLng pickup = new LatLng();
             pickup.setLatitude(Double.parseDouble(lat));
             pickup.setLongitude(Double.parseDouble(lng));
