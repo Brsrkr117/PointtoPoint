@@ -76,10 +76,20 @@ public class OrderLocationActivity extends AppCompatActivity
     protected String lat;
     protected String lng;
 
+    //
+    private String ordertype;
+    private String price;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle b = getIntent().getExtras();
+        ordertype= b.getString("ordertype");
+        price= b.getString("price");
+
 
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
@@ -283,6 +293,17 @@ public class OrderLocationActivity extends AppCompatActivity
     private void openPlacesDialog() {
        lat = Double.toString(mLastKnownLocation.getLatitude());
        lng = Double.toString(mLastKnownLocation.getLongitude());
+
+        Intent intent = new Intent(OrderLocationActivity.this, PickupLocationActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("dlat",lat);
+        bundle.putString("dlng",lng);
+        bundle.putString("ordertype",ordertype);
+        bundle.putString("price", price);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+
       startActivity(new Intent(OrderLocationActivity.this, PickupLocationActivity.class));
     }
 

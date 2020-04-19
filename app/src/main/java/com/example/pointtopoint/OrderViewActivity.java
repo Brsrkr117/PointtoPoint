@@ -54,8 +54,16 @@ public class OrderViewActivity extends AppCompatActivity {
                 Toast.makeText(OrderViewActivity.this, "Select Pick-up location", Toast.LENGTH_LONG).show();
                 finish();
                 Intent intent = new Intent(getApplicationContext(), OrderLocationActivity.class);
-                intent.putExtra("ordertype",aTitle );
-                intent.putExtra("price", aDescription);
+                //intent.putExtra("ordertype",aTitle );
+                //intent.putExtra("price", aDescription);
+
+
+                Bundle bundle =new Bundle();
+                bundle.putString("ordertype",aTitle);
+                bundle.putString("price",aDescription);
+
+                intent.putExtras(bundle);
+
                 startActivity(intent);
 
             }
