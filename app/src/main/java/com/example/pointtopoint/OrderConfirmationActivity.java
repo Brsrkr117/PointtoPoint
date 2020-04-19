@@ -44,8 +44,25 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private String auserfullname,ausername,auserid,ausernumber,auseremail;
     private String usertype;
 
+
+    private String ordertypebundle;
+    private String price;
+    private String dlat,dlng;
+    private String plat,plng;
+
     protected String Getaddress(double latitude, double longitude) {
         StringBuffer msg = new StringBuffer();
+
+        Bundle b = getIntent().getExtras();
+        ordertypebundle= b.getString("ordertype");
+        price= b.getString("price");
+        dlat=b.getString("dlat");
+        dlng=b.getString("dlng");
+        plat=b.getString("plat");
+        plng=b.getString("plng");
+
+
+
 
         //call GeoCoder getFromLocation to get address
         //returns list of addresses, take first one and send info to result receiver
@@ -96,13 +113,11 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         UserID=firebaseAuth.getCurrentUser().getUid();
 
 
-        Intent intent = getIntent();
+        /*Intent intent = getIntent();
         final String aordertype = intent.getStringExtra("ordertype");
-        final String afullprice = intent.getStringExtra("price");
+        final String afullprice = intent.getStringExtra("price");*/
 
-        ordertype.setText(aordertype);
-        fullprice.setText(afullprice);
-
+        ordertype.setText(ordertypebundle);
 
         DocumentReference docref=db.collection("users").document(UserID);
 
@@ -121,6 +136,21 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             }
         });
 
+        String comp=customertype.getText().toString();
+        if(comp.equals("Regular")){
+            double tempprice = Double.parseDouble(price);
+            tempprice *= (0.8);
+            price=Double.toString(tempprice);
+            fullprice.setText("To be paid:Rs " + price);
+        }
+        else{
+            fullprice.setText("To be paid:Rs " + price);
+        }
+
+
+
+
+
         Placeorder.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -129,12 +159,16 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 Map<String, Object> order = new HashMap<>();
                 order.putIfAbsent("orderstatus","pending");
                 order.putIfAbsent("userid",UserID);
-                order.putIfAbsent("ordertype",aordertype);
-                order.putIfAbsent("price",afullprice);
+                order.putIfAbsent("ordertype",ordertypebundle);
+                order.putIfAbsent("price",price);
                 order.putIfAbsent("userfullname",auserfullname);
                 order.putIfAbsent("username",ausername);
                 order.putIfAbsent("useremail",auseremail);
                 order.putIfAbsent("usernumber",ausernumber);
+                order.putIfAbsent("droplat",dlat);
+                order.putIfAbsent("droplong",dlng);
+                order.putIfAbsent("pickuplat",plat);
+                order.putIfAbsent("pickuplong",plng);
 
                 db.collection("orders").add(order).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
