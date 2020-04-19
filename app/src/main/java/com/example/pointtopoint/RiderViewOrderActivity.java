@@ -1,10 +1,13 @@
 package com.example.pointtopoint;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -58,6 +61,10 @@ public class RiderViewOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rider_view_order);
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         mOrderlist=(RecyclerView)findViewById(R.id.Order_list);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -110,25 +117,35 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
                         //conditional recycler view
 
-                        
-                        Location pickup = new Location("");
-                        pickup.setLatitude(Double.parseDouble(pickuplat));
-                        pickup.setLongitude(Double.parseDouble(pickuplong));
-                        float distance = mLastKnownLocation.distanceTo(pickup);
+                        try {
+                            Location pickup = new Location("");
+                            pickup.setLatitude(Double.parseDouble(pickuplat));
+                            pickup.setLongitude(Double.parseDouble(pickuplong));
+                            float distance = mLastKnownLocation.distanceTo(pickup);
 
-                        double latitude = mLastKnownLocation.getLatitude();
-                        double longitude = mLastKnownLocation.getLongitude();
+                            double latitude = mLastKnownLocation.getLatitude();
+                            double longitude = mLastKnownLocation.getLongitude();
+
 
                         /*LatLng pickup = new LatLng();
                         pickup.setLatitude(Double.parseDouble(pickuplat));
                         pickup.setLongitude(Double.parseDouble(pickuplong));*/
 
-                        //Toast.makeText(RiderViewOrderActivity.this,pickuplat,Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RiderViewOrderActivity.this,pickuplat,Toast.LENGTH_SHORT).show();
 
-                        if(temporderstatus.equals("pending") && distance < (Float.parseFloat(rad)*1000)){
-                            Toast.makeText(RiderViewOrderActivity.this,pickuplat,Toast.LENGTH_SHORT).show();
-                            ordersList.add(orders);
-                            ordersListAdapter.notifyDataSetChanged();
+                            if (temporderstatus.equals("pending") && distance < (Float.parseFloat(rad) * 1000)) {
+                                //Toast.makeText(RiderViewOrderActivity.this, pickuplat, Toast.LENGTH_SHORT).show();
+                                ordersList.add(orders);
+                                ordersListAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        catch (NullPointerException p)
+                        {
+                            Toast.makeText(RiderViewOrderActivity.this,"Sorry for inconvenience.Please Restart and Login again",Toast.LENGTH_SHORT).show();
+                            firebaseAuth.signOut();
+                            finish();
+                            startActivity(new Intent(RiderViewOrderActivity.this, LoginActivity.class));
+
                         }
 
 
@@ -203,4 +220,38 @@ public class RiderViewOrderActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    /*@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.reset_radius:
+                Toast.makeText(RiderViewOrderActivity.this, "Sorry for inconvenience.Please Restart app", Toast.LENGTH_SHORT).show();
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(RiderViewOrderActivity.this, LoginActivity.class));
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    }
+
+
 }

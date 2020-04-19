@@ -36,7 +36,8 @@
         <activity android:name=".RiderOtpActivity" />
         <activity android:name=".OrderConfirmationActivity" />
         <activity android:name=".EmailActivity" />
-        <activity android:name=".RiderViewOrderActivity" />
+        <activity android:name=".RiderViewOrderActivity"
+            android:theme="@style/AppTheme2"/>
         <activity android:name=".OrderViewActivity" />
         <activity
             android:name=".ItemListActivity"

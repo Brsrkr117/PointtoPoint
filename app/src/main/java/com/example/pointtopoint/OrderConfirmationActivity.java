@@ -122,7 +122,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         String drop = Getaddress(Double.parseDouble(dlat),Double.parseDouble(dlng));
 
         pickuplocation.setText("Pickup: " + pick);
-        droplocation.setText("drop: " + drop);
+        droplocation.setText("Drop: " + drop);
         ordertype.setText(ordertypebundle);
 
         DocumentReference docref=db.collection("users").document(UserID);
