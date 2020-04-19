@@ -118,7 +118,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         final String aordertype = intent.getStringExtra("ordertype");
         final String afullprice = intent.getStringExtra("price");*/
 
-        String pick = Getaddress(Double.parseDouble(plat),Double.parseDouble(plat));
+        String pick = Getaddress(Double.parseDouble(plat),Double.parseDouble(plng));
         String drop = Getaddress(Double.parseDouble(dlat),Double.parseDouble(dlng));
 
         pickuplocation.setText("Pickup: " + pick);

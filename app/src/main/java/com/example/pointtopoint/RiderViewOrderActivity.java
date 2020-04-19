@@ -114,8 +114,17 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                         pickup.setLongitude(Double.parseDouble(pickuplong));
                         float distance = mLastKnownLocation.distanceTo(pickup);
 
+                        double latitude = mLastKnownLocation.getLatitude();
+                        double longitude = mLastKnownLocation.getLongitude();
 
-                        if(temporderstatus.equals("pending") && distance < Float.parseFloat(rad)){
+                        /*LatLng pickup = new LatLng();
+                        pickup.setLatitude(Double.parseDouble(pickuplat));
+                        pickup.setLongitude(Double.parseDouble(pickuplong));*/
+
+                        //Toast.makeText(RiderViewOrderActivity.this,pickuplat,Toast.LENGTH_SHORT).show();
+
+                        if(temporderstatus.equals("pending") && distance < (Float.parseFloat(rad)*1000)){
+                            Toast.makeText(RiderViewOrderActivity.this,pickuplat,Toast.LENGTH_SHORT).show();
                             ordersList.add(orders);
                             ordersListAdapter.notifyDataSetChanged();
                         }
