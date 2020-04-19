@@ -50,17 +50,12 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private String dlat,dlng;
     private String plat,plng;
 
+
+
+
+
     protected String Getaddress(double latitude, double longitude) {
         StringBuffer msg = new StringBuffer();
-
-        Bundle b = getIntent().getExtras();
-        ordertypebundle= b.getString("ordertype");
-        price= b.getString("price");
-        dlat=b.getString("dlat");
-        dlng=b.getString("dlng");
-        plat=b.getString("plat");
-        plng=b.getString("plng");
-
 
 
 
@@ -112,11 +107,25 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
         UserID=firebaseAuth.getCurrentUser().getUid();
 
+        Bundle b = getIntent().getExtras();
+        ordertypebundle= b.getString("ordertype");
+        price= b.getString("price");
+        dlat=b.getString("dlat");
+        dlng=b.getString("dlng");
+        plat=b.getString("plat");
+        plng=b.getString("plng");
+
+
 
         /*Intent intent = getIntent();
         final String aordertype = intent.getStringExtra("ordertype");
         final String afullprice = intent.getStringExtra("price");*/
 
+        String pick = Getaddress(Double.parseDouble(plat),Double.parseDouble(plat));
+        String drop = Getaddress(Double.parseDouble(dlat),Double.parseDouble(dlng));
+
+        pickuplocation.setText("Pickup: " + pick);
+        droplocation.setText("drop: " + drop);
         ordertype.setText(ordertypebundle);
 
         DocumentReference docref=db.collection("users").document(UserID);
