@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -31,13 +30,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.PlaceLikelihood;
-import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
-import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -279,51 +273,6 @@ public class OrderLocationActivity extends AppCompatActivity
         }
 
         if (mLocationPermissionGranted) {
-            List<Place.Field> placeFields = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS,
-                    Place.Field.LAT_LNG);
-
-            // Use the builder to create a FindCurrentPlaceRequest.
-            FindCurrentPlaceRequest request =
-                    FindCurrentPlaceRequest.newInstance(placeFields);
-
-            // Get the likely places - that is, the businesses and other points of interest that
-            // are the best match for the device's current location.
-            @SuppressWarnings("MissingPermission") final
-            Task<FindCurrentPlaceResponse> placeResult =
-                    mPlacesClient.findCurrentPlace(request);
-            placeResult.addOnCompleteListener (task -> {
-                if (task.isSuccessful() && task.getResult() != null) {
-                    FindCurrentPlaceResponse likelyPlaces = task.getResult();
-
-                    // Set the count, handling cases where less than 5 entries are returned.
-                    int count = Math.min(likelyPlaces.getPlaceLikelihoods().size(), M_MAX_ENTRIES);
-
-                    int i = 0;
-                    mLikelyPlaceNames = new String[count];
-                    mLikelyPlaceAddresses = new String[count];
-                    mLikelyPlaceAttributions = new List[count];
-                    mLikelyPlaceLatLngs = new LatLng[count];
-
-                    for (PlaceLikelihood placeLikelihood : likelyPlaces.getPlaceLikelihoods()) {
-                        // Build a list of likely places to show the user.
-                        mLikelyPlaceNames[i] = placeLikelihood.getPlace().getName();
-                        mLikelyPlaceAddresses[i] = placeLikelihood.getPlace().getAddress();
-                        mLikelyPlaceAttributions[i] = placeLikelihood.getPlace()
-                                .getAttributions();
-                        mLikelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
-
-                        i++;
-                        if (i > (count - 1)) {
-                            break;
-                        }
-                    }
-                    Toast.makeText(OrderLocationActivity.this, mLikelyPlaceAddresses[1], Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Log.e(TAG, "Exception: %s", task.getException());
-                    Toast.makeText(OrderLocationActivity.this, "No Result", Toast.LENGTH_LONG).show();
-                }
-            });
             OrderLocationActivity.this.openPlacesDialog();
         }
         else
@@ -332,7 +281,6 @@ public class OrderLocationActivity extends AppCompatActivity
 
 
     private void openPlacesDialog() {
-        // Ask the user to choose the place where they are now.
        lat = Double.toString(mLastKnownLocation.getLatitude());
        lng = Double.toString(mLastKnownLocation.getLongitude());
       startActivity(new Intent(OrderLocationActivity.this, PickupLocationActivity.class));
