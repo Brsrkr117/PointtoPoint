@@ -129,7 +129,7 @@ public class RiderLocationActivity extends AppCompatActivity
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.current_location_menu, menu);
+        getMenuInflater().inflate(R.menu.order_delivered_menu, menu);
         return true;
     }
 
@@ -140,7 +140,7 @@ public class RiderLocationActivity extends AppCompatActivity
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.option_get_place) {
+        if (item.getItemId() == R.id.option_delivered_order) {
 
         }
         return true;

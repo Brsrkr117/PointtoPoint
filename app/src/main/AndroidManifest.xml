@@ -27,12 +27,14 @@
         <activity android:name=".RiderLocationActivity"
             android:exported="true"/>
         <activity android:name=".OrderLocationActivity"
-            android:exported="true"/>
+            android:exported="true"
+            android:label="@string/drop_location"/>
 
         <activity android:name=".UserOtpActivity" />
         <activity
             android:name=".PickupLocationActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="@string/pickup_location"/>
         <activity android:name=".RiderOtpActivity" />
         <activity android:name=".OrderConfirmationActivity" />
         <activity android:name=".EmailActivity" />
@@ -60,7 +62,8 @@
             android:name=".ProfileActivity"
             android:theme="@style/AppTheme2" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:theme="@style/AppTheme2"/>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"

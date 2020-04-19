@@ -15,4 +15,7 @@
     <string name="user_location_permission_not_granted">Location Permission not Granted</string>
     <string name="location_picker_place_name_result">%s</string>
     <string name="location_picker_dropped_marker_snippet_no_results">No Results</string>
+    <string name="drop_location">Drop Location</string>
+    <string name="pickup_location">PickUp Location</string>
+    <string name="option_delivered_order">Order Delivered!</string>
 </resources>
