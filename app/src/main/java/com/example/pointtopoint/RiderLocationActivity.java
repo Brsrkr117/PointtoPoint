@@ -1,5 +1,6 @@
 package com.example.pointtopoint;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -25,10 +26,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -62,9 +67,24 @@ public class RiderLocationActivity extends AppCompatActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
+
+    private String OrderID;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        //database portion
+        Intent intent = getIntent();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        db= FirebaseFirestore.getInstance();
+        OrderID=intent.getStringExtra("orderid");
+
+
 
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
@@ -161,14 +181,37 @@ public class RiderLocationActivity extends AppCompatActivity
             }
         });
 
-        LatLng pickUp = new LatLng(pickuplat,pickuplong);
-        mMap.addMarker(new MarkerOptions().position(pickUp)
-                .title("PickUp Location")
-                .snippet(pickupaddress));
-        LatLng drop = new LatLng(droplat,droplong);
-        mMap.addMarker(new MarkerOptions().position(drop)
-                .title("Drop Location")
-                .snippet(dropaddress));
+        //database
+
+        db=FirebaseFirestore.getInstance();
+        db.collection("orders").document(OrderID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot doc=task.getResult();
+
+                    final double pickuplat=Double.parseDouble(doc.getString("pickuplat"));
+                    final double pickuplong=Double.parseDouble(doc.getString("pickuplong"));
+
+                    final double droplat=Double.parseDouble(doc.getString("droplat"));
+                    final double droplong=Double.parseDouble(doc.getString("droplong"));
+
+                    LatLng pickUp = new LatLng(pickuplat,pickuplong);
+                    mMap.addMarker(new MarkerOptions().position(pickUp)
+                            .title("PickUp Location")
+                            .snippet(doc.getString("pickaddr")));
+                    LatLng drop = new LatLng(droplat,droplong);
+
+                    mMap.addMarker(new MarkerOptions().position(drop)
+                            .title("Drop Location")
+                            .snippet(doc.getString("dropaddr")));
+                }
+
+            }
+        });
+
+
+
 
         // Prompt the user for permission.
         getLocationPermission();

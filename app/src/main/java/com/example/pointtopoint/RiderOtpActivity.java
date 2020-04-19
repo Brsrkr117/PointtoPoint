@@ -211,10 +211,10 @@ public class RiderOtpActivity extends AppCompatActivity {
                         //rider map
 
 
-                        /*finish();
-                        Intent intent = new Intent(getApplicationContext(), UserOtpActivity.class);
+                        finish();
+                        Intent intent = new Intent(getApplicationContext(), RiderLocationActivity.class);
                         intent.putExtra("orderid",OrderID);
-                        startActivity(intent);*/
+                        startActivity(intent);
                     }
                 }
             }

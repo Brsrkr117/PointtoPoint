@@ -175,6 +175,9 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 order.putIfAbsent("droplong",dlng);
                 order.putIfAbsent("pickuplat",plat);
                 order.putIfAbsent("pickuplong",plng);
+                order.putIfAbsent("pickaddr",pick);
+                order.putIfAbsent("dropaddr",drop);
+
 
                 db.collection("orders").add(order).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
