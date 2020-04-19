@@ -106,9 +106,18 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                         String pickupaddr=orders.getPickaddr();
                         String dropaddr=orders.getDropaddr();
 
+
+
                         //conditional recycler view
 
-                        if(temporderstatus.equals("pending")){
+                        
+                        Location pickup = new Location("");
+                        pickup.setLatitude(lat);
+                        pickup.setLongitude(lng);
+                        float distance = currentLocation.distanceTo(pickup);
+                        return distance < Float.parseFloat(rad);
+
+                        if(temporderstatus.equals("pending") && orderInRad(Double.parseDouble(droplat),Double.parseDouble(droplat))){
                             ordersList.add(orders);
                             ordersListAdapter.notifyDataSetChanged();
                         }
