@@ -5,7 +5,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,9 +29,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-
-
-
+import timber.log.Timber;
 
 
 public class OrderConfirmationActivity extends AppCompatActivity {
@@ -75,7 +72,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                     longitude,
                     1);
         } catch (Exception ioException) {
-            Log.e("", "Error in getting address for the location");
+            Timber.e("Error in getting address for the location");
         }
 
         if (addresses == null || addresses.size() == 0) {
