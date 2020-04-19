@@ -300,11 +300,13 @@ public class OrderLocationActivity extends AppCompatActivity
         bundle.putString("dlng",lng);
         bundle.putString("ordertype",ordertype);
         bundle.putString("price", price);
+
         intent.putExtras(bundle);
+
         startActivity(intent);
 
 
-      startActivity(new Intent(OrderLocationActivity.this, PickupLocationActivity.class));
+
     }
 
     /**

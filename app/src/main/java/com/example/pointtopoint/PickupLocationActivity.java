@@ -1,5 +1,6 @@
 package com.example.pointtopoint;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -59,9 +60,24 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
     private ImageView hoveringMarker;
     private Layer droppedMarkerLayer;
 
+
+    //variables
+    private String ordertype;
+    private String price;
+    private String dlat,dlng;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        Bundle b = getIntent().getExtras();
+        ordertype= b.getString("ordertype");
+        price= b.getString("price");
+        dlat=b.getString("dlat");
+        dlng=b.getString("dlat");
+
+
 
 // Mapbox access token is configured here. This needs to be called either in your application
 // object or in the same activity which contains the mapview.
@@ -157,7 +173,20 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_get_place) {
-            //showCurrentPlace();
+            Intent intent = new Intent(PickupLocationActivity.this, OrderConfirmationActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("dlat",lat);
+            bundle.putString("dlng",dlng);
+            bundle.putString("ordertype",ordertype);
+            bundle.putString("price", price);
+            bundle.putString("plat",lat);
+            bundle.putString("plng",lng);
+
+            intent.putExtras(bundle);
+
+            startActivity(intent);
+            
+
         }
         return true;
     }
