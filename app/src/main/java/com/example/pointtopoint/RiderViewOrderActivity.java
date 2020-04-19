@@ -38,11 +38,11 @@ public class RiderViewOrderActivity extends AppCompatActivity {
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     private Location mLastKnownLocation;
-    private Location mPickupLocation;
     private boolean mLocationPermissionGranted;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private double currentLat;
     private double currentLng;
+    float distance;
 
 
     @Override
@@ -116,7 +116,6 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                         if (mLastKnownLocation != null) {
                             currentLat = mLastKnownLocation.getLatitude();
                             currentLng = mLastKnownLocation.getLatitude();
-                            float distance = mLastKnownLocation.distanceTo(mPickupLocation);
                         }
                     } else {
                         Log.d(TAG, "Current location is null. Using defaults.");

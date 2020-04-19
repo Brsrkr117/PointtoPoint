@@ -25,13 +25,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -163,7 +161,7 @@ public class RiderLocationActivity extends AppCompatActivity
             }
         });
 
-        LatLng pickUp = new LatLng(pickuplat,pickuplong);
+        /*LatLng pickUp = new LatLng(pickuplat,pickuplong);
         mMap.addMarker(new MarkerOptions().position(pickUp)
                 .title("PickUp Location")
                 .snippet(pickupaddress));
@@ -171,7 +169,7 @@ public class RiderLocationActivity extends AppCompatActivity
         mMap.addMarker(new MarkerOptions().position(drop)
                 .title("Drop Location")
                 .snippet(dropaddress));
-
+*/
         // Prompt the user for permission.
         getLocationPermission();
 
