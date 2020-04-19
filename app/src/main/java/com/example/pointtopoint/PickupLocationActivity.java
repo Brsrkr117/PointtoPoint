@@ -75,7 +75,7 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
         ordertype= b.getString("ordertype");
         price= b.getString("price");
         dlat=b.getString("dlat");
-        dlng=b.getString("dlat");
+        dlng=b.getString("dlng");
 
 
 
@@ -185,7 +185,7 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
             intent.putExtras(bundle);
 
             startActivity(intent);
-            
+
 
         }
         return true;
