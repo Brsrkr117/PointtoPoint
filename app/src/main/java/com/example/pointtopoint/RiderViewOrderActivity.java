@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import timber.log.Timber;
+
 public class RiderViewOrderActivity extends AppCompatActivity {
 
     private static final String TAG = "here displaying";
@@ -138,7 +140,6 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
 
     }
-   
     private void getDeviceLocation() {
         /*
          * Get the best and most recent location of the device, which may be null in rare
@@ -161,7 +162,7 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                 });
             }
         } catch (SecurityException e)  {
-            Log.e("Exception: %s", Objects.requireNonNull(e.getMessage()));
+            Timber.e(Objects.requireNonNull(e.getMessage()));
         }
     }
 
