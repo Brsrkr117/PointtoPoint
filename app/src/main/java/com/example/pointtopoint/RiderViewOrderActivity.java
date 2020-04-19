@@ -120,12 +120,12 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
 
     }
-    private boolean orderInRad(Location currentLocation, double lat, double lng){
+    private boolean orderInRad( double lat, double lng){
         Location pickup = new Location("");
         pickup.setLatitude(lat);
         pickup.setLongitude(lng);
-        float distance = currentLocation.distanceTo(pickup);
-        return distance > Float.parseFloat(rad);
+        float distance = mLastKnownLocation.distanceTo(pickup);
+        return distance < Float.parseFloat(rad);
     }
     private void getDeviceLocation() {
         /*
