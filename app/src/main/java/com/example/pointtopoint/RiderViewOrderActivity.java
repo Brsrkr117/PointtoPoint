@@ -134,8 +134,6 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                             current.setLongitude(Double.parseDouble(currentlong));
                             float distance = (float) current.distanceTo(pickup);
 
-                            double latitude = mLastKnownLocation.getLatitude();
-                            double longitude = mLastKnownLocation.getLongitude();
 
 
                         /*LatLng pickup = new LatLng();

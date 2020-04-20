@@ -68,8 +68,9 @@ public class RiderSecondActivity extends AppCompatActivity {
         getLocationPermission();
         getDeviceLocation();
 
-        currentlat = Double.toString(mLastKnownLocation.getLatitude());
-        currentlong = Double.toString(mLastKnownLocation.getLongitude());
+        //Toast.makeText(RiderSecondActivity.this,Double.toString(mLastKnownLocation.getLatitude()) , Toast.LENGTH_SHORT).show();
+        //currentlat = Double.toString(mLastKnownLocation.getLatitude());
+        //currentlong = Double.toString(mLastKnownLocation.getLongitude());
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
