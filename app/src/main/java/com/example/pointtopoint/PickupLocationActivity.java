@@ -175,28 +175,32 @@ public class PickupLocationActivity extends AppCompatActivity implements Permiss
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_get_place) {
+                if (hoveringMarker.getVisibility() == View.VISIBLE){
+                Toast.makeText(PickupLocationActivity.this,"Confirm Location Selection",Toast.LENGTH_SHORT).show();
+                }
 
-            LatLng pickup = new LatLng();
-            pickup.setLatitude(Double.parseDouble(lat));
-            pickup.setLongitude(Double.parseDouble(lng));
-            LatLng drop = new LatLng();
-            drop.setLatitude(Double.parseDouble(dlat));
-            drop.setLongitude(Double.parseDouble(dlng));
-            double distance = pickup.distanceTo(drop);
-            price = Double.toString(Double.parseDouble(price)+distance*0.0040);
-            Intent intent = new Intent(PickupLocationActivity.this, OrderConfirmationActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("dlat",dlat);
-            bundle.putString("dlng",dlng);
-            bundle.putString("ordertype",ordertype);
-            bundle.putString("price", price);
-            bundle.putString("plat",lat);
-            bundle.putString("plng",lng);
+                else{
+                LatLng pickup = new LatLng();
+                pickup.setLatitude(Double.parseDouble(lat));
+                pickup.setLongitude(Double.parseDouble(lng));
+                LatLng drop = new LatLng();
+                drop.setLatitude(Double.parseDouble(dlat));
+                drop.setLongitude(Double.parseDouble(dlng));
+                double distance = pickup.distanceTo(drop);
+                price = Double.toString(Double.parseDouble(price) + distance * 0.0040);
+                Intent intent = new Intent(PickupLocationActivity.this, OrderConfirmationActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("dlat", dlat);
+                bundle.putString("dlng", dlng);
+                bundle.putString("ordertype", ordertype);
+                bundle.putString("price", price);
+                bundle.putString("plat", lat);
+                bundle.putString("plng", lng);
 
-            intent.putExtras(bundle);
+                intent.putExtras(bundle);
 
-            startActivity(intent);
-
+                startActivity(intent);
+            }
 
         }
         return true;
