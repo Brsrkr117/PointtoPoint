@@ -156,6 +156,8 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
 
 
+
+
     }
     private void getDeviceLocation() {
         /*

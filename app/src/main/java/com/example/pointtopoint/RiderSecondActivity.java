@@ -75,10 +75,9 @@ public class RiderSecondActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), RiderViewOrderActivity.class);
                     intent.putExtras(bundle);
-                    //finish();
+                    finish();
                     startActivity(intent);
                 }
-
 
             }
         });
