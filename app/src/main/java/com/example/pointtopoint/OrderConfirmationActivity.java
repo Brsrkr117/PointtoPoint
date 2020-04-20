@@ -139,23 +139,22 @@ public class OrderConfirmationActivity extends AppCompatActivity {
 
                 customertype.setText(documentSnapshot.getString("CustomerType"));
 
+                String comp=customertype.getText().toString();
+
+                if(comp.equals("Regular")){
+                    double tempprice = Double.parseDouble(price);
+                    tempprice *= (0.8);
+                    price=Double.toString(tempprice);
+                    fullprice.setText("To be paid:Rs " + price + "(discount applied)");
+                }
+                else{
+                    fullprice.setText("To be paid:Rs " + price);
+                }
+
             }
         });
 
-        String comp=customertype.getText().toString();
-
-        if(comp.equals("Regular")){
-            double tempprice = Double.parseDouble(price);
-            tempprice *= (0.8);
-            price=Double.toString(tempprice);
-            fullprice.setText("To be paid:Rs " + price + "(discount applied)");
-        }
-        else{
-            fullprice.setText("To be paid:Rs " + price);
-        }
-
-
-
+        
 
 
         Placeorder.setOnClickListener(new View.OnClickListener() {

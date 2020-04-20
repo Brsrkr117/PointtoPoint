@@ -14,8 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SecondActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private Button signout;
-    private Button Viewprofile;
+    //private Button signout;
+    //private Button Viewprofile;
     private Button createorder;
 
     @Override
@@ -24,11 +24,11 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        signout=(Button)(Button) findViewById(R.id.btnSignout);
-        Viewprofile=(Button)(Button) findViewById(R.id.btnProfile);
+        //signout=(Button)(Button) findViewById(R.id.btnSignout);
+        //Viewprofile=(Button)(Button) findViewById(R.id.btnProfile);
         createorder=(Button)(Button) findViewById(R.id.btnOrder);
 
-        signout.setOnClickListener(new View.OnClickListener() {
+        /*signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Logout();
@@ -41,7 +41,7 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(SecondActivity.this, UserProfileViewActivity.class));
             }
-        });
+        });*/
 
         createorder.setOnClickListener(new View.OnClickListener() {
             @Override

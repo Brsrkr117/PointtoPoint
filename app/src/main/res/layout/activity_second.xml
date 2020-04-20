@@ -30,29 +30,19 @@
             android:layout_marginTop="20dp"
             app:srcCompat="@drawable/lunchbox" />
 
-        <Button
-            android:id="@+id/btnSignout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="Signout" />
 
-        <Button
-            android:id="@+id/btnProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="View Profile" />
+
+
 
         <Button
             android:id="@+id/btnOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:text="Create An order" />
+
+
 
     </LinearLayout>
 

@@ -145,7 +145,7 @@ public class RiderLocationActivity extends AppCompatActivity
             firebaseAuth.signOut();
             finish();
             Toast.makeText(RiderLocationActivity.this, "You have delivered the order", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this,LoginActivity.class));
+            startActivity(new Intent(this,RiderSecondActivity.class));
         }
         return true;
     }
