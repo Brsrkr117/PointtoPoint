@@ -5,7 +5,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,15 +20,11 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-
-import timber.log.Timber;
 
 
 
@@ -129,25 +124,15 @@ public class RiderSecondActivity extends AppCompatActivity {
          * Get the best and most recent location of the device, which may be null in rare
          * cases when a location is not available.
          */
-        try {
-            if (mLocationPermissionGranted) {
-                Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Set the map's camera position to the current location of the device.
-                        mLastKnownLocation = task.getResult();
-                        if (mLastKnownLocation != null) {
-                            Toast.makeText(RiderSecondActivity.this,"Location Detected",Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Log.d(TAG, "Current location is null. Using defaults.");
-                        Log.e(TAG, "Exception: %s", task.getException());
-                    }
-                });
+        mFusedLocationProviderClient.getLastLocation().addOnSuccessListener(this,location ->{
+            if(location!=null){
+                currentlat = Double.toString(location.getLatitude());
+                currentlong = Double.toString(location.getLongitude());
+                Toast.makeText(RiderSecondActivity.this,"Location Detected",Toast.LENGTH_SHORT).show();
             }
-        } catch (SecurityException e)  {
-            Timber.e(Objects.requireNonNull(e.getMessage()));
-        }
+            else
+                Toast.makeText(RiderSecondActivity.this,"Location null",Toast.LENGTH_SHORT).show();
+        } );
     }
 
 
