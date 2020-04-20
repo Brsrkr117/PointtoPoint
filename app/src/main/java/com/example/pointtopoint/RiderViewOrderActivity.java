@@ -28,6 +28,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,8 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
     private String UserID;
     private String rad;
+    private String currentlat;
+    private String currentlong;
 
 
     @Override
@@ -73,6 +76,9 @@ public class RiderViewOrderActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         rad = b.getString("radius");
+        currentlat=b.getString("currentlat");
+        currentlong=b.getString("currentlong");
+
 
         Toast.makeText(RiderViewOrderActivity.this,"Your radius is " + rad +"km", Toast.LENGTH_LONG).show();
 
@@ -118,10 +124,15 @@ public class RiderViewOrderActivity extends AppCompatActivity {
                         //conditional recycler view
 
                         try {
-                            Location pickup = new Location("");
+                            LatLng pickup = new LatLng();
                             pickup.setLatitude(Double.parseDouble(pickuplat));
                             pickup.setLongitude(Double.parseDouble(pickuplong));
-                            float distance = mLastKnownLocation.distanceTo(pickup);
+
+
+                            LatLng current = new LatLng();
+                            current.setLatitude(Double.parseDouble(currentlat));
+                            current.setLongitude(Double.parseDouble(currentlong));
+                            float distance = (float) current.distanceTo(pickup);
 
                             double latitude = mLastKnownLocation.getLatitude();
                             double longitude = mLastKnownLocation.getLongitude();

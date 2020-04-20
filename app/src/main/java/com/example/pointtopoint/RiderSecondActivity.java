@@ -68,6 +68,9 @@ public class RiderSecondActivity extends AppCompatActivity {
         getLocationPermission();
         getDeviceLocation();
 
+        currentlat = Double.toString(mLastKnownLocation.getLatitude());
+        currentlong = Double.toString(mLastKnownLocation.getLongitude());
+
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,8 +95,7 @@ public class RiderSecondActivity extends AppCompatActivity {
                     Toast.makeText(RiderSecondActivity.this, "Enter radius", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    currentlat = Double.toString(mLastKnownLocation.getLatitude());
-                    currentlong = Double.toString(mLastKnownLocation.getLongitude());
+
 
                     db=FirebaseFirestore.getInstance();
 
@@ -104,6 +106,8 @@ public class RiderSecondActivity extends AppCompatActivity {
 
                     Bundle bundle = new Bundle();
                     bundle.putString("radius",rad);
+                    bundle.putString("currentlat",currentlat);
+                    bundle.putString("currentlong",currentlong);
 
                     Intent intent = new Intent(getApplicationContext(), RiderViewOrderActivity.class);
                     intent.putExtras(bundle);
