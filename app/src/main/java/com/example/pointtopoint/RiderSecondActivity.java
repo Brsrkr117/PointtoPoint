@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,12 +32,13 @@ import java.util.Map;
 public class RiderSecondActivity extends AppCompatActivity {
     private static final String TAG = "here";
     private FirebaseAuth firebaseAuth;
-    private Button signout;
-    private Button Viewprofile;
+    //private Button signout;
+    //private Button Viewprofile;
     private Button Vieworders;
     private EditText radius;
     private String UserID;
     private FirebaseFirestore db;
+    private TextView locationhead,lat,lng;
 
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
@@ -54,20 +56,29 @@ public class RiderSecondActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
         UserID=firebaseAuth.getCurrentUser().getUid();
-        signout=(Button)findViewById(R.id.buttonRsignout);
-        Viewprofile=(Button) findViewById(R.id.btnviewprof);
+        //signout=(Button)findViewById(R.id.buttonRsignout);
+        //Viewprofile=(Button) findViewById(R.id.btnviewprof);
         Vieworders=(Button) findViewById(R.id.btnViewOrder);
         radius=(EditText) findViewById(R.id.etradius);
+        locationhead=findViewById(R.id.loc_head);
+
+        lat=findViewById(R.id.lat);
+        lng=findViewById(R.id.lng);
+
+
+
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         mFusedLocationProviderClient.getLastLocation();
         getLocationPermission();
         getDeviceLocation();
 
-        //Toast.makeText(RiderSecondActivity.this,Double.toString(mLastKnownLocation.getLatitude()) , Toast.LENGTH_SHORT).show();
-        //currentlat = Double.toString(mLastKnownLocation.getLatitude());
-        //currentlong = Double.toString(mLastKnownLocation.getLongitude());
+        //Toast.makeText(RiderSecondActivity.this,currentlat, Toast.LENGTH_SHORT).show();
+        currentlat = lat.getText().toString();
+        currentlong = lng.getText().toString();
 
-        signout.setOnClickListener(new View.OnClickListener() {
+        //Toast.makeText(RiderSecondActivity.this, currentlat, Toast.LENGTH_LONG).show();
+
+        /*signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Logout();
@@ -80,18 +91,20 @@ public class RiderSecondActivity extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(RiderSecondActivity.this, RiderProfileViewActivity.class));
             }
-        });
+        });*/
 
         Vieworders.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 String rad=radius.getText().toString();
+                String currentlat1 = lat.getText().toString();
+                String currentlong1 = lng.getText().toString();
+
                 if(rad.isEmpty()){
                     Toast.makeText(RiderSecondActivity.this, "Enter radius", Toast.LENGTH_SHORT).show();
                 }
                 else{
-
 
                     db=FirebaseFirestore.getInstance();
 
@@ -100,10 +113,14 @@ public class RiderSecondActivity extends AppCompatActivity {
 
                     db.collection("riders").document(UserID).update(usermap);
 
+
+
                     Bundle bundle = new Bundle();
                     bundle.putString("radius",rad);
-                    bundle.putString("currentlat",currentlat);
-                    bundle.putString("currentlong",currentlong);
+                    bundle.putString("currentlat",currentlat1);
+                    bundle.putString("currentlong",currentlong1);
+
+                    //Toast.makeText(RiderSecondActivity.this,currentlat1, Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(getApplicationContext(), RiderViewOrderActivity.class);
                     intent.putExtras(bundle);
@@ -127,8 +144,10 @@ public class RiderSecondActivity extends AppCompatActivity {
          */
         mFusedLocationProviderClient.getLastLocation().addOnSuccessListener(this,location ->{
             if(location!=null){
-                currentlat = Double.toString(location.getLatitude());
-                currentlong = Double.toString(location.getLongitude());
+                /*currentlat = Double.toString(location.getLatitude());
+                currentlong = Double.toString(location.getLongitude());*/
+                lng.setText(Double.toString(location.getLongitude()));
+                lat.setText(Double.toString(location.getLatitude()));
                 Toast.makeText(RiderSecondActivity.this,"Location Detected",Toast.LENGTH_SHORT).show();
             }
             else

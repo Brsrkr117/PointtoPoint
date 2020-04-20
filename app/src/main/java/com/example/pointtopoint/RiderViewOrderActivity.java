@@ -92,8 +92,8 @@ public class RiderViewOrderActivity extends AppCompatActivity {
         mOrderlist.setAdapter(ordersListAdapter);
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         mFusedLocationProviderClient.getLastLocation();
-        getLocationPermission();
-        getDeviceLocation();
+        //getLocationPermission();
+        //getDeviceLocation();
 
         db=FirebaseFirestore.getInstance();
         db.collection("orders").addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -253,10 +253,8 @@ public class RiderViewOrderActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.reset_radius:
-                Toast.makeText(RiderViewOrderActivity.this, "Sorry for inconvenience.Please Restart app", Toast.LENGTH_SHORT).show();
-                firebaseAuth.signOut();
                 finish();
-                startActivity(new Intent(RiderViewOrderActivity.this, LoginActivity.class));
+                startActivity(new Intent(RiderViewOrderActivity.this, RiderSecondActivity.class));
                 break;
         }
 
