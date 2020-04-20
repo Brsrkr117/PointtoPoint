@@ -6,108 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".RiderProfileViewActivity">
 
-    <ImageView
-        android:id="@+id/ivProfilePic"
-        android:layout_width="180dp"
-        android:layout_height="140dp"
-        android:background="@drawable/user_profile_image_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027"
-        app:srcCompat="@drawable/rider" />
 
-    <TextView
-        android:id="@+id/tvProfileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name:"
-        android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfilePic"
-        app:layout_constraintVertical_bias="0.070" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        tools:context=".UserProfileViewActivity">
 
-    <TextView
-        android:id="@+id/tvProfileUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username:"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileName"
-        app:layout_constraintVertical_bias="0.064" />
 
-    <TextView
-        android:id="@+id/tvProfileEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email:"
-        android:textSize="20dp"
-        android:drawableLeft="@drawable/ic_email"
-        android:drawablePadding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileUsername"
-        app:layout_constraintVertical_bias="0.066" />
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/user_profile_image_background"
+            app:srcCompat="@drawable/rider" />
 
-    <TextView
-        android:id="@+id/tvMobileNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MobileNumber:"
-        android:textSize="20dp"
-        android:drawableLeft="@drawable/ic_phone"
-        android:drawablePadding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail"
-        app:layout_constraintVertical_bias="0.080" />
+        <TextView
+            android:id="@+id/tvProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textSize="22dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            />
 
-    <Button
-        android:id="@+id/btnProfileUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMobileNumber"
-        app:layout_constraintVertical_bias="0.110" />
+        <TextView
+            android:id="@+id/tvProfileUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username:"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            />
 
-    <Button
-        android:id="@+id/btnChangePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnProfileUpdate"
-        app:layout_constraintVertical_bias="0.095" />
+        <TextView
+            android:id="@+id/tvProfileEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="5dp"
+            android:text="Email:"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            />
 
-    <Button
-        android:id="@+id/btnback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangePassword"
-        app:layout_constraintVertical_bias="0.095" />
+        <TextView
+            android:id="@+id/tvMobileNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="5dp"
+            android:text="MobileNumber:"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/btnProfileUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Password"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btnback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go back"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"/>
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

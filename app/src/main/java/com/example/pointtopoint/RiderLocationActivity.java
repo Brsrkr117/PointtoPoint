@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -141,7 +142,10 @@ public class RiderLocationActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_delivered_order) {
-
+            firebaseAuth.signOut();
+            finish();
+            Toast.makeText(RiderLocationActivity.this, "You have delivered the order", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this,LoginActivity.class));
         }
         return true;
     }
