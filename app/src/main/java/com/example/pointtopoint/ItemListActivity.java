@@ -23,7 +23,7 @@ public class ItemListActivity extends AppCompatActivity {
     String mTitle[] = {"Non Veg Small", "Non veg Medium", "Non Veg Large", "Veg Small", "Veg Medium","Veg Large"};
     String mDescription[] = {"60", "70", "80", "50", "60", "70"};
     int images[] = {R.drawable.shopping_cart,R.drawable.shopping_cart, R.drawable.shopping_cart, R.drawable.shopping_cart, R.drawable.shopping_cart, R.drawable.shopping_cart};
-
+    int images2[] ={R.drawable.nonveg,R.drawable.nonveg,R.drawable.nonveg,R.drawable.veg,R.drawable.veg,R.drawable.veg};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class ItemListActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listView);
 
-        MyAdapter adapter = new MyAdapter(ItemListActivity.this, mTitle, mDescription, images);
+        MyAdapter adapter = new MyAdapter(ItemListActivity.this, mTitle, mDescription, images,images2);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -127,14 +127,16 @@ public class ItemListActivity extends AppCompatActivity {
         String rTitle[];
         String rDescription[];
         int rImgs[];
+        int sImgs[];
 
 
-        MyAdapter (Context c, String title[], String description[], int imgs[]) {
+        MyAdapter (Context c, String title[], String description[], int imgs[],int simgs[]) {
             super(c, R.layout.row, R.id.textView1, title);
             this.context = c;
             this.rTitle = title;
             this.rDescription = description;
             this.rImgs = imgs;
+            this.sImgs = simgs;
 
         }
 
@@ -144,9 +146,11 @@ public class ItemListActivity extends AppCompatActivity {
             LayoutInflater layoutInflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row, parent, false);
             ImageView images = row.findViewById(R.id.imagerow);
+            ImageView images2 = row.findViewById(R.id.nonveg);
             TextView myTitle = row.findViewById(R.id.textView1);
             TextView myDescription = row.findViewById(R.id.textView2);
             images.setImageResource(rImgs[position]);
+            images2.setImageResource(sImgs[position]);
             myTitle.setText(rTitle[position]);
             myDescription.setText("Rs" + rDescription[position]);
             return row;
