@@ -194,15 +194,15 @@ public class RiderOtpActivity extends AppCompatActivity {
                         Toast.makeText(RiderOtpActivity.this, "User not assigned", Toast.LENGTH_SHORT).show();
                     }
                     else if(currentstatus.equals("cancelled")){
-                        firebaseAuth.signOut();
+                        //firebaseAuth.signOut();
                         finish();
-                        startActivity(new Intent(RiderOtpActivity.this, LoginActivity.class));
+                        startActivity(new Intent(RiderOtpActivity.this, RiderSecondActivity.class));
                         Toast.makeText(RiderOtpActivity.this, "User has cancelled order", Toast.LENGTH_LONG).show();
                     }
                     else if(currentstatus.equals("assigned") && (!UserID.equals(assignedrider))){
-                        firebaseAuth.signOut();
+                        //firebaseAuth.signOut();
                         finish();
-                        startActivity(new Intent(RiderOtpActivity.this, LoginActivity.class));
+                        startActivity(new Intent(RiderOtpActivity.this, RiderSecondActivity.class));
                         Toast.makeText(RiderOtpActivity.this, "Sorry,Some other rider has been assigned.", Toast.LENGTH_LONG).show();
                     }
                     else if(currentstatus.equals("confirmed")){
