@@ -142,7 +142,7 @@ public class RiderLocationActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_delivered_order) {
-            firebaseAuth.signOut();
+            //firebaseAuth.signOut();
             finish();
             Toast.makeText(RiderLocationActivity.this, "You have delivered the order", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this,RiderSecondActivity.class));
