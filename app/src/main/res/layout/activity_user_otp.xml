@@ -40,7 +40,7 @@
         android:id="@+id/tv2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Not received otp?Cancel and try again"
+        android:text="Not received OTP?Cancel and try again"
         android:textColor="#000000"
         android:textSize="20sp"
         android:gravity="center"
