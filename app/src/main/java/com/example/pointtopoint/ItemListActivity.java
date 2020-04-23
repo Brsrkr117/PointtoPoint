@@ -22,7 +22,7 @@ public class ItemListActivity extends AppCompatActivity {
     ListView listView;
     String mTitle[] = {"Non Veg Small", "Non veg Medium", "Non Veg Large", "Veg Small", "Veg Medium","Veg Large"};
     String mDescription[] = {"60", "70", "80", "50", "60", "70"};
-    int images[] = {R.drawable.shopping_cart,R.drawable.shopping_cart, R.drawable.shopping_cart, R.drawable.shopping_cart, R.drawable.shopping_cart, R.drawable.shopping_cart};
+    int images[] = {R.drawable.nonveg_foodbox,R.drawable.nonveg_foodbox, R.drawable.nonveg_foodbox, R.drawable.foodbox, R.drawable.foodbox, R.drawable.foodbox};
     int images2[] ={R.drawable.nonveg,R.drawable.nonveg,R.drawable.nonveg,R.drawable.veg,R.drawable.veg,R.drawable.veg};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
