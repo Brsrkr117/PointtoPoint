@@ -63,7 +63,7 @@ public class UserOtpActivity extends AppCompatActivity {
                             compareotp=doc.getString("orderotp");
                             String receivedotp=otp.getText().toString();
                             if (receivedotp.isEmpty()){
-                                Toast.makeText(UserOtpActivity.this, "Please enter otp", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserOtpActivity.this, "Please enter OTP", Toast.LENGTH_SHORT).show();
                             }
                             else if(compareotp.equals(receivedotp)){
                                 db3=FirebaseFirestore.getInstance();
@@ -73,7 +73,7 @@ public class UserOtpActivity extends AppCompatActivity {
                                 usermap.put("orderstatus","confirmed");
 
                                 docref3.update(usermap);
-                                Toast.makeText(UserOtpActivity.this, "Correct otp", Toast.LENGTH_LONG).show();
+                                Toast.makeText(UserOtpActivity.this, "Correct OTP", Toast.LENGTH_LONG).show();
 
                                 finish();
                                 Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
@@ -81,7 +81,7 @@ public class UserOtpActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                             else{
-                                Toast.makeText(UserOtpActivity.this, "Incorrect otp", Toast.LENGTH_LONG).show();
+                                Toast.makeText(UserOtpActivity.this, "Incorrect OTP", Toast.LENGTH_LONG).show();
                             }
 
 
