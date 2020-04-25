@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,8 @@ import timber.log.Timber;
 
 
 public class OrderConfirmationActivity extends AppCompatActivity {
-    private TextView ordertype,fullprice,customertype,pickuplocation,droplocation;
+    private TextView ordertype,fullprice,customertype;
+    private EditText pickuplocation,droplocation;
     private Button Placeorder;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore db;
@@ -95,8 +97,8 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         ordertype = findViewById(R.id.ordertype);
         fullprice= findViewById(R.id.fullprice);
         customertype=findViewById(R.id.customertype);
-        pickuplocation= findViewById(R.id.pickuplocation);
-        droplocation= findViewById(R.id.droplocation);
+        pickuplocation= findViewById(R.id.etpickup);
+        droplocation= findViewById(R.id.etdrop);
         Placeorder=findViewById(R.id.confirmorder);
 
 
@@ -121,8 +123,8 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         String pick = Getaddress(Double.parseDouble(plat),Double.parseDouble(plng));
         String drop = Getaddress(Double.parseDouble(dlat),Double.parseDouble(dlng));
 
-        pickuplocation.setText("Pickup: " + pick);
-        droplocation.setText("Drop: " + drop);
+        pickuplocation.setText(pick);
+        droplocation.setText(drop);
         ordertype.setText(ordertypebundle);
 
         DocumentReference docref=db.collection("users").document(UserID);
@@ -154,13 +156,16 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             }
         });
 
-        
+
 
 
         Placeorder.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
+
+                String newpick=pickuplocation.getText().toString();
+                String newdrop=droplocation.getText().toString();
 
                 Map<String, Object> order = new HashMap<>();
                 order.putIfAbsent("orderstatus","pending");
@@ -175,8 +180,8 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 order.putIfAbsent("droplong",dlng);
                 order.putIfAbsent("pickuplat",plat);
                 order.putIfAbsent("pickuplong",plng);
-                order.putIfAbsent("pickaddr",pick);
-                order.putIfAbsent("dropaddr",drop);
+                order.putIfAbsent("pickaddr",newpick);
+                order.putIfAbsent("dropaddr",newdrop);
 
 
                 db.collection("orders").add(order).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

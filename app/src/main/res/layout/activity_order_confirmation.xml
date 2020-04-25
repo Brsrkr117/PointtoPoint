@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/OrderText"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="Title Text"
         android:textColor="#000000"
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ordertype"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Title Text"
         android:textColor="#000000"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/customertype"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Title Text"
         android:textColor="#000000"
@@ -59,11 +59,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/fullprice"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="Title Text"
+        android:text="Pick Up:"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
+        />
+
+    <EditText
+        android:id="@+id/etpickup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickuplocation"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:hint="Your Pickup Address;"
+        android:textSize="15sp"
         />
 
     <TextView
@@ -71,18 +83,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/pickuplocation"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="Title Text"
+        android:text="Drop:"
         android:textColor="#000000"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/etdrop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/droplocation"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:hint="Your Drop Address:"
+        android:textSize="15sp"
+        />
 
     <Button
         android:id="@+id/confirmorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/droplocation"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="#d67601"
         android:gravity="center"
         android:text="Place Order"
