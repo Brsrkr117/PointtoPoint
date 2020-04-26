@@ -211,7 +211,7 @@ public class RiderOtpActivity extends AppCompatActivity {
                         //rider map
 
 
-                        finish();
+                        //finish();
                         Intent intent = new Intent(getApplicationContext(), RiderLocationActivity.class);
                         intent.putExtra("orderid",OrderID);
                         startActivity(intent);
